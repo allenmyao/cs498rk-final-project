@@ -9,7 +9,7 @@ npm install # if on windows add the flag `--no-bin-links`
 bower install
 grunt sass
 grunt uglify
-nodemon server.js # or `grunt` to watch frontend files
+grunt
 ```
 
 ## File Structure
