@@ -1,6 +1,8 @@
 # Final Project for CS498rk
 
 ## Running the Project
+First, set up the app configuration. Find out how in `app/config/default/README.md`.
+
 Use the following commands to get this up and running:
 ```bash
 npm install # if on windows add the flag `--no-bin-links`

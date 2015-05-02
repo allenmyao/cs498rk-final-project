@@ -48,7 +48,7 @@ app.use(passport.session());
 
 
 // use public folder (for static files)
-app.use(express.static(__dirname + './public'));
+app.use(express.static(__dirname + '/public'));
 
 
 // Allow CORS so that backend and frontend could pe put on different servers

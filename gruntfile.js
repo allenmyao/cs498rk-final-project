@@ -19,17 +19,8 @@ module.exports = function(grunt) {
             cwd: 'frontend/js',
             src: ['**/*.js'],
             dest: 'public/js',
-            ext: '.min.js'
           }
         ]
-      }
-    },
-    copy: {
-      files: {
-        expand : true,
-        cwd    : 'frontend/js',
-        src    : ['**/*.js'],
-        dest   : 'public/js'
       }
     },
     sass: {
@@ -51,16 +42,15 @@ module.exports = function(grunt) {
     watch: {
       options: { livereload: true },
       scripts: {
-        files: ['frontend/js/**/*.js'],
-        //tasks: ['clean','uglify'] // uglify (minify) the javascript
-        tasks: ['copy'] // copy the javascript (for debugging)
+        files: ['frontend/js/*.js'],
+        tasks: ['clean', 'uglify'] // copy the javascript (for debugging)
       },
       sass: {
-        files: ['frontend/sass/**/*.scss'],
+        files: ['frontend/sass/*.scss'],
         tasks: ['sass:dist']
       },
       html: {
-        files: ['public/*.html']
+        files: ['frontend/views/*.jade', 'public/*.html']
       }
     },
     express: {

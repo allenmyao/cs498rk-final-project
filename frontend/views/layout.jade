@@ -9,59 +9,55 @@ html(lang='en')
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
         
-        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
+        link(rel='stylesheet', href='./lib/bootstrap/dist/css/bootstrap.min.css')
         link(rel='stylesheet', href='./css/styles.min.css')
-
-        script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
-        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
-        //- script(src='https://cdn.socket.io/socket.io-1.3.4.js')
-
-        script(src='./js/scripts.min.js')
-
+            
     body
-        nav.navbar.navbar-inverse.navbar-fixed-top
-            .container-fluid
-                .navbar-header
-                    button(type='button', 
-                           class=['navbar-toggle collapsed'], 
-                           data-toggle='collapse', 
-                           data-target='#navbar-content')
-                        span.sr-only Toggle Navigation
-                        span.icon-bar
-                        span.icon-bar
-                        span.icon-bar
-                    a(class='navbar-brand', href="/") Name
-
-                #navbar-content.navbar-collapse.collapse
-                    ul.nav.navbar-nav
-                        //- #[] for inline elements
-                        li #[a(href="/") Home]
-                        li #[a(href="/users") Users]
-                    //- search bar:
-                    //- form(class=['navbar-form', 'navbar-left'], role='search')
-                        .form-group
-                            input(type='text', class='form-control', placeholder='search')
-                        button(type='submit', class=['btn', 'btn-default']) Submit
-                    ul.nav.navbar-nav.navbar-right
-                        li.dropdown
-                            a(href='#', 
-                              class='dropdown-toggle', 
-                              data-toggle='dropdown', 
-                              role='button', 
-                              aria-expanded='false') User #[span.caret]
-                            ul(class='dropdown-menu', role='menu')
-                                li #[a(href="#") Account]
-                                li #[a(href="#") Orders]
-                                li.divider
-                                li #[a(href="#") Log Out]
-            
-            
-
-        .fill
-
         .container
-            block content
+            nav.navbar.navbar-inverse.navbar-fixed-top
+                .container-fluid
+                    .navbar-header
+                        button(type='button', 
+                               class=['navbar-toggle collapsed'], 
+                               data-toggle='collapse', 
+                               data-target='#navbar-content')
+                            span.sr-only Toggle Navigation
+                            span.icon-bar
+                            span.icon-bar
+                            span.icon-bar
+                        a(class='navbar-brand', href="/") Name
 
-        footer
-            .container
+                    #navbar-content.navbar-collapse.collapse
+                        ul.nav.navbar-nav
+                            //- #[] for inline elements
+                            li #[a(href="/") Home]
+                            li #[a(href="/users") Users]
+                        //- search bar:
+                        //- form(class=['navbar-form', 'navbar-left'], role='search')
+                            .form-group
+                                input(type='text', class='form-control', placeholder='search')
+                            button(type='submit', class=['btn', 'btn-default']) Submit
+                        ul.nav.navbar-nav.navbar-right
+                            li.dropdown
+                                a(href='#', 
+                                  class='dropdown-toggle', 
+                                  data-toggle='dropdown', 
+                                  role='button', 
+                                  aria-expanded='false') i.fa.fa-gear #[span.caret]
+                                ul(class='dropdown-menu', role='menu')
+                                    li #[a(href="#") Account]
+                                    li #[a(href="#") Orders]
+                                    li.divider
+                                    li #[a(href="#") Log Out]
+
+            block content
+            
+            hr 
+            footer
                 p Copyright &copy; 2015
+                
+        script(src='./lib/jquery/dist/jquery.min.js')
+        script(src='./lib/bootstrap/dist/js/bootstrap.min.js')
+
+        script(src='./js/script.js')
+        script(src="//localhost:35729/livereload.js")
