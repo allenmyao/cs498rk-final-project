@@ -1,0 +1,1 @@
+exports.UserApiController = require('./user');

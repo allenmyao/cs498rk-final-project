@@ -1,0 +1,11 @@
+extends layout
+
+block content
+	h1 Profile
+	div= JSON.stringify(data)
+	if data && data.user
+		div Username: #{data.user.username}
+		div Email: #{data.user.email}
+		div Password hash: #{data.user.password}
+	else
+		div User not found
