@@ -5,5 +5,6 @@ node_modules/
 npm-debug.log
 public/css/
 public/js/
+public/lib/
 
 app/config/*.js
