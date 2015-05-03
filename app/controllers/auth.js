@@ -37,19 +37,13 @@ passport.use(new Strategy({
     });
 }));
 
-exports.isAuthenticated = function(success, fail) {
-    return passport.authenticate('local', {
-        session: true,
-        successRedirect: success,
-        failureRedirect: fail
-    });
-};
+exports.isAuthenticated = passport.authenticate('local', { session: true });
 
 exports.isLoggedIn = function(req, res, next) {
-    if (req.isAuthenticated())
+    if (req.isAuthenticated()) {
         next();
-    else {
-        res.json({
+    } else {
+        res.status(401).json({
             error: 'Not logged in'
         });
     }

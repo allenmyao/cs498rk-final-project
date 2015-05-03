@@ -9,22 +9,17 @@ module.exports = (function() {
     pagesRouter.route('/')
         .get(pages.getIndex);
 
+    pagesRouter.route('/loggedin')
+        .get(pages.getLoggedIn);
+
     pagesRouter.route('/login')
-        .get(pages.getLogin)
-        .post(pages.postLogin, auth.isAuthenticated('/profile', '/login'));
+        .post(auth.isAuthenticated, pages.postLogin);
 
     pagesRouter.route('/signup')
-        .get(pages.getSignup)
-        .post(pages.postSignup, auth.isAuthenticated('/profile', '/signup'));
+        .post(pages.postSignup);
 
-    // pagesRouter.route('/logout')
-    //     .get();
-
-    pagesRouter.route('/profile')
-        .get(pages.getProfile, auth.isLoggedIn);
-
-    pagesRouter.route('/profile/:username')
-        .get(pages.getProfile);
+    pagesRouter.route('/logout')
+        .post(pages.postLogout);
     
     return pagesRouter;
 })();

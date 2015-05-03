@@ -3,24 +3,15 @@ var User = require('./user');
 
 
 exports.getIndex = function(req, res, next) {
-    // res.sendfile('./public/index.html');
-    var data = {
-        title: 'Homepage'
-    };
-    res.render('index', { data: data }); // renders index view
+    res.sendFile('/public/index.html');
 };
 
-exports.getLogin = function(req, res, next) {
-    res.render('login');
+exports.getLoggedIn = function(req, res, next) {
+    res.send(req.isAuthenticated() ? req.user : 0);
 };
 
 exports.postLogin = function(req, res, next) {
-    // res.redirect('/profile/' + req.user.username);
-    next();
-};
-
-exports.getSignup = function(req, res, next) {
-    res.render('signup');
+    res.send(req.user);
 };
 
 exports.postSignup = function(req, res, next) {
@@ -43,7 +34,8 @@ exports.postSignup = function(req, res, next) {
     };
 
     User.createUser(userData, function(user) {
-        next();
+        req.login(user);
+        res.status(200).send(user);
         // passport.authenticate('local', function(err, user) {
         //     if (err)
         //         return next(err);
@@ -55,9 +47,7 @@ exports.postSignup = function(req, res, next) {
     });
 };
 
-exports.getProfile = function(req, res, next) {
-    console.log(req.user);
-    res.render('profile', { data: {
-        user: req.user
-    }});
+exports.postLogout = function(req, res, next) {
+    req.logout();
+    res.status(200);
 };
