@@ -33,7 +33,9 @@ html(lang='en')
                         ul.nav.navbar-nav
                             //- #[] for inline elements
                             li #[a(href="/") Home]
-                            li #[a(href="/users") Users]
+                            li #[a(href="/signup") Signup]
+                            li #[a(href="/login") Login]
+                            li #[a(href="/profile") Profile]
                         //- search bar:
                         //- form(class=['navbar-form', 'navbar-left'], role='search')
                             .form-group
@@ -48,8 +50,7 @@ html(lang='en')
                                   aria-expanded='false') 
                                     i.fa.fa-gear.fa-lg
                                 ul(class='dropdown-menu', role='menu')
-                                    li #[a(href="#") Account]
-                                    li #[a(href="#") Orders]
+                                    li #[a(href="#") Profile]
                                     li.divider
                                     li #[a(href="#") Log Out]
 
