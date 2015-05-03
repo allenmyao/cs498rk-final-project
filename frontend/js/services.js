@@ -3,9 +3,26 @@ var appServices = angular.module('appServices', []);
 
 appServices.factory('Auth', [
     '$http',
+    '$window',
     'baseUrl',
-    function($http, baseUrl) {
+    function($http, $window, baseUrl) {
         return {
+            getUser: function() {
+                var userStr = $window.sessionStorage.user;
+                if (!userStr) return false;
+                try {
+                    var user = JSON.parse(userStr);
+                } catch (e) {
+                    console.log('Error parsing user in session');
+                    return false;
+                }
+                if (user) console.log(user);
+                return user;
+            },
+            setUser: function(data) {
+                if (data) console.log(data);
+                return $window.sessionStorage.user = JSON.stringify(data);
+            },
             login: function(data) {
                 return $http.post(baseUrl + '/login', data);
             },
@@ -21,7 +38,7 @@ appServices.factory('Auth', [
 
 appServices.factory('Users', [
     '$http',
-    'baseUrl'
+    'baseUrl',
     function($http, baseUrl) {
         return {
             get: function(params) {

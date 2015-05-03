@@ -11,8 +11,8 @@ app.config([
     function($routeProvider) {
         $routeProvider
         .when('/', {
-            templateUrl: 'partials/index.html',
-            controller: 'IndexController'
+            templateUrl: 'partials/home.html',
+            controller: 'HomepageController'
         })
         .when('/login', {
             templateUrl: 'partials/login.html',
@@ -22,16 +22,28 @@ app.config([
             templateUrl: 'partials/signup.html',
             controller: 'SignupController'
         })
-        // .when('/profile', {
-        //     templateUrl: 'partials/profile.html',
-        //     controller: 'ProfileController'
-        // })
-        .when('/profile/:username', {
+        .when('/profile', {
             templateUrl: 'partials/profile.html',
             controller: 'ProfileController'
+        })
+        .when('/profile/:username', {
+            templateUrl: 'partials/otherprofile.html',
+            controller: 'OtherProfileController'
+        })
+        .when('/logout', {
+            template: ' ',
+            controller: 'LogoutController'
         })
         .otherwise({
             redirectTo: '/'
         });
+    }
+]);
+
+
+app.run([
+    '$window',
+    function($window) {
+        $window.sessionStorage.user = '';
     }
 ]);
