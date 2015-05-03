@@ -1,22 +1,22 @@
 var express = require('express');
-var UserApiController = require('./../../controllers/api').UserApiController;
+var userApiController = require('./../../controllers/api').userApiController;
 
 
 module.exports = (function() {
     var userApiRouter = express.Router();
 
     userApiRouter.route('/')
-        .get(UserApiController.getUsers)
-        .post(UserApiController.postUsers);
+        .get(userApiController.getUsers)
+        .post(userApiController.postUsers);
         // .put()
         // .options()
         // .delete();
 
     userApiRouter.route('/:user_id')
-        .get(UserApiController.getUser)
+        .get(userApiController.getUser)
         // .post()
-        .put(UserApiController.putUser)
-        .delete(UserApiController.deleteUser);
+        .put(userApiController.putUser)
+        .delete(userApiController.deleteUser);
 
     return userApiRouter;
 })();

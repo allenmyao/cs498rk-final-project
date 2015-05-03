@@ -11,7 +11,8 @@ var UserSchema = new Schema({
     },
     email: {
         type: String,
-        unique: true
+        unique: true,
+        required: true
     },
     password: {
         type: String,
@@ -19,10 +20,8 @@ var UserSchema = new Schema({
     }
 });
 
-// hash password on user update
-UserSchema.pre('save', function(callback) {
-    var user = this;
 
+function hashPassword(user, callback) {
     if (!user.isModified('password'))
         return callback();
 
@@ -36,7 +35,20 @@ UserSchema.pre('save', function(callback) {
             callback();
         });
     });
+}
+
+// hash password on user save or update
+UserSchema.pre('save', function(callback) {
+    hashPassword(this, callback);
 });
+
+UserSchema.pre('update', function(callback) {
+    hashPassword(this, callback);
+});
+
+// UserSchema.post('remove', function(user) {
+//     user._id
+// });
 
 UserSchema.methods.verifyPassword = function(password, callback) {
     bcrypt.compare(password, this.password, function(err, isMatch) {

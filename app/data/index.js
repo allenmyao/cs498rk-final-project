@@ -11,6 +11,7 @@ var readFile = function(filename, callback) {
     });
 };
 
-module.exports = {
-    readFile: readFile
+exports.readFile = readFile;
+exports.loadTags = function(callback) {
+	readFile('./tags.json', callback);
 };

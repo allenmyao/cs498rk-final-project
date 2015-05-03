@@ -1,4 +1,6 @@
 var express = require('express');
+var apiRouter = require('./api');
+var pagesRouter = require('./pages');
 
 
 module.exports = function(app) {
@@ -9,9 +11,6 @@ module.exports = function(app) {
         next();
     });
     app.use(router);
-    
-    var apiRouter = require('./api');
-    var pagesRouter = require('./pages');
 
     app.use('/api', apiRouter);
     app.use('/', pagesRouter);

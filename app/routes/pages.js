@@ -17,6 +17,9 @@ module.exports = (function() {
         .get(pages.getSignup)
         .post(pages.postSignup, auth.isAuthenticated('/profile', '/signup'));
 
+    // pagesRouter.route('/logout')
+    //     .get();
+
     pagesRouter.route('/profile')
         .get(pages.getProfile, auth.isLoggedIn);
 

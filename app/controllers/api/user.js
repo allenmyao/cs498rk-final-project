@@ -1,10 +1,8 @@
-var models = require('./../../models');
-var User = models.User;
-var UserController = require('./../user');
+var userController = require('./../user');
 
 
 exports.getUsers = function(req, res, next) {
-    var users = UserController.getUsers(req.query, function(users) {
+    userController.getUsers(req.query, function(users) {
         res.json({
             message: typeof users
         });
@@ -12,15 +10,15 @@ exports.getUsers = function(req, res, next) {
 };
 
 exports.postUsers = function(req, res, next) {
-    var newUser = UserController.createUser(req.body, function(users) {
+    userController.createUser(req.body, function(newUser) {
         res.json({
-            message: typeof users
+            message: typeof newUser
         });
     });
 };
 
 exports.getUser = function(req, res, next) {
-    UserController.getUser(req.params.user_id, function(user) {
+    userController.getUser(req.params.user_id, function(user) {
         res.json({
             message: typeof user
         });
@@ -28,7 +26,7 @@ exports.getUser = function(req, res, next) {
 };
 
 exports.putUser = function(req, res, next) {
-    UserController.updateUser(req.params.user_id, req.body, function(user) {
+    userController.updateUser(req.params.user_id, req.body, function(user) {
         res.json({
             message: typeof user
         });
@@ -36,7 +34,7 @@ exports.putUser = function(req, res, next) {
 };
 
 exports.deleteUser = function(req, res, next) {
-    UserController.deleteUser(req.params.user_id, function(user) {
+    userController.deleteUser(req.params.user_id, function(user) {
         res.json({
             message: typeof user
         });
