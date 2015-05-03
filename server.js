@@ -39,7 +39,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({ secret: 'test' }));
+app.use(session({
+    resave: true,
+    saveUninitialized: true,
+    secret: settings.sessionSecret
+}));
 
 
 // use passport package for authentication
