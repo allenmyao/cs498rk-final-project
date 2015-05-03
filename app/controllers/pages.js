@@ -2,10 +2,6 @@
 var User = require('./user');
 
 
-exports.getIndex = function(req, res, next) {
-    res.sendFile('/public/index.html');
-};
-
 exports.getLoggedIn = function(req, res, next) {
     res.send(req.isAuthenticated() ? req.user : 0);
 };
@@ -33,21 +29,32 @@ exports.postSignup = function(req, res, next) {
         password: req.body.password
     };
 
-    User.createUser(userData, function(user) {
-        req.login(user);
-        res.status(200).send(user);
-        // passport.authenticate('local', function(err, user) {
-        //     if (err)
-        //         return next(err);
-        //     // if (!user)
-        //     //     res.send(404, 'Incorrect username or password.');
-        //     else if (user)
-        //         res.redirect('/profile/' + user.username);
-        // })(req, res, next);
+    User.createUser(userData, function(err, user) {
+        if (err) {
+            console.log(err);
+            res.status(500).json({
+                message: err.message,
+                error: err
+            })
+        } else {
+            console.log(user);
+            req.login(user, function(err) {
+                if (err) {
+                    console.log(err);
+                    res.status(500).json({
+                        message: err.message,
+                        error: err
+                    });
+                }
+                else res.status(200).send(user);
+            });
+        }
     });
 };
 
 exports.postLogout = function(req, res, next) {
     req.logout();
-    res.status(200);
+    res.status(200).json({
+        message: 'Successfully logged out'
+    });
 };

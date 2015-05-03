@@ -6,14 +6,11 @@ var auth = require('./../controllers/auth');
 module.exports = (function() {
     var pagesRouter = express.Router();
 
-    pagesRouter.route('/')
-        .get(pages.getIndex);
-
     pagesRouter.route('/loggedin')
         .get(pages.getLoggedIn);
 
     pagesRouter.route('/login')
-        .post(auth.isAuthenticated, pages.postLogin);
+        .post(auth.authenticate, pages.postLogin);
 
     pagesRouter.route('/signup')
         .post(pages.postSignup);

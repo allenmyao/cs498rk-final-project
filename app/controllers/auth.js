@@ -14,7 +14,7 @@ passport.deserializeUser(function(id, callback) {
     });
 });
 
-passport.use(new Strategy({
+passport.use('local', new Strategy({
     usernameField: 'username',
     passwordField: 'password'
 }, function(username, password, callback) {
@@ -37,7 +37,7 @@ passport.use(new Strategy({
     });
 }));
 
-exports.isAuthenticated = passport.authenticate('local', { session: true });
+exports.authenticate = passport.authenticate('local');
 
 exports.isLoggedIn = function(req, res, next) {
     if (req.isAuthenticated()) {

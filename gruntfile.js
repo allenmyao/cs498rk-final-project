@@ -43,7 +43,7 @@ module.exports = function(grunt) {
       options: { livereload: true },
       scripts: {
         files: ['frontend/js/*.js'],
-        tasks: ['clean', 'uglify'] // copy the javascript (for debugging)
+        tasks: ['clean', 'uglify']
       },
       sass: {
         files: ['frontend/sass/*.scss'],

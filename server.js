@@ -28,13 +28,8 @@ mongoose.connect(database.url, function(err) {
 });
 
 
-// view engine setup
-app.set('views', path.join(__dirname, './frontend/views'));
-app.set('view engine', 'jade');
-
-
 // FUTURE: uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
+// app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -55,16 +50,6 @@ app.use(passport.session());
 app.use(express.static(__dirname + '/public'));
 
 
-// Allow CORS so that backend and frontend could pe put on different servers
-// var allowCrossDomain = function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Headers", "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept");
-//     res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
-//     next();
-// };
-// app.use(allowCrossDomain);
-
-
 // load routes
 require('./app/routes')(app);
 
@@ -72,16 +57,14 @@ require('./app/routes')(app);
 // error handlers
 if (settings.env === 'development') {
     app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
+        res.status(err.status || 500).json({
             message: err.message,
             error: err
         });
     });
 } else {
     app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
+        res.status(err.status || 500).json({
             message: err.message,
             error: {}
         });
