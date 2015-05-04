@@ -1,15 +1,20 @@
-<div>
-    <h1>Login page</h1>
-
-    <form data-ng-submit="submitForm()">
-        <div>
-            <label>Username:</label>
-            <input type="text" data-ng-model="user.username">
-        </div>
-        <div>
-            <label>Password:</label>
-            <input type="password" data-ng-model="user.password">
-        </div>
-        <button type="submit">Submit</button>
-    </form>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <form class="form-horizontal userForm" data-ng-submit="submitForm()">
+            <div>
+                <label>Username:</label>
+                <input class="form-control" type="text" data-ng-model="user.username">
+            </div>
+            <div>
+                <label>Password:</label>
+                <input class="form-control" type="password" data-ng-model="user.password">
+            </div>
+            </br>
+            <button class="btn btn-primary form-control" type="submit">Log In</button>
+        </form>
+        </br>
+        <a href="#/signup"><button class="btn btn-info form-control">Sign Up</button></a>
+    </div>
+    <div class="col-md-4"></div>
 </div>
