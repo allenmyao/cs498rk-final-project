@@ -1,6 +1,6 @@
 var express = require('express');
 var apiRouter = require('./api');
-var pagesRouter = require('./pagesRouter');
+var pagesRouter = require('./pages-router');
 
 
 module.exports = function(app) {

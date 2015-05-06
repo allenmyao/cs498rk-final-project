@@ -1,5 +1,5 @@
 //var passport = require('passport');
-var User = require('./userController');
+var User = require('./user-controller');
 
 
 exports.getLoggedIn = function(req, res, next) {

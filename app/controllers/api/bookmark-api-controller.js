@@ -1,4 +1,4 @@
-var bookmarkController = require('./../bookmarkController');
+var bookmarkController = require('./../bookmark-controller');
 
 
 exports.getBookmarks = function(req, res, next) {

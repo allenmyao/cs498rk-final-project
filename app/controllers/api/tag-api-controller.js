@@ -1,4 +1,4 @@
-var tagController = require('./../tagController');
+var tagController = require('./../tag-controller');
 
 
 exports.getTags = function(req, res, next) {
