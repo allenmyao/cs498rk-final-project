@@ -1,4 +1,4 @@
-var stackController = require('./../stack');
+var stackController = require('./../stackController');
 
 
 exports.getStacks = function(req, res, next) {

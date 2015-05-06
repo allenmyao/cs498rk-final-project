@@ -1,4 +1,4 @@
-var commentController = require('./../comment');
+var commentController = require('./../commentController');
 
 
 exports.getComments = function(req, res, next) {

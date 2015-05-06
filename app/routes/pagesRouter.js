@@ -1,5 +1,5 @@
 var express = require('express');
-var pages = require('./../controllers/pages');
+var pages = require('./../controllers/pagesController');
 var auth = require('./../controllers/auth');
 
 

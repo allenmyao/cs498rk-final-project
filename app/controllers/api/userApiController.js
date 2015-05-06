@@ -1,4 +1,4 @@
-var userController = require('./../user');
+var userController = require('./../userController');
 
 
 exports.getUsers = function(req, res, next) {

@@ -1,9 +1,9 @@
 var express = require('express');
-var userApiRouter = require('./user');
-var bookmarkApiRouter = require('./bookmark');
-var stackApiRouter = require('./stack');
-var commentApiRouter = require('./comment');
-var tagApiRouter = require('./tag');
+var userApiRouter = require('./userApiRouter');
+var bookmarkApiRouter = require('./bookmarkApiRouter');
+var stackApiRouter = require('./stackApiRouter');
+var commentApiRouter = require('./commentApiRouter');
+var tagApiRouter = require('./tagApiRouter');
 
 
 module.exports = (function() {

@@ -1,5 +1,5 @@
-exports.userApiController = require('./user');
-exports.bookmarkApiController = require('./bookmark');
-exports.stackApiController = require('./stack');
-exports.commentApiController = require('./comment');
-exports.tagApiController = require('./tag');
+exports.userApiController = require('./userApiController');
+exports.bookmarkApiController = require('./bookmarkApiController');
+exports.stackApiController = require('./stackApiController');
+exports.commentApiController = require('./commentApiController');
+exports.tagApiController = require('./tagApiController');
