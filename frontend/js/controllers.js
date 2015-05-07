@@ -98,4 +98,19 @@ appControllers.controller('LogoutController', [
             console.log('Failed to logout');
         });
     }
-])
+]);
+
+
+appControllers.controller('StackDetailController', [
+    '$scope',
+    function($scope) {
+        
+    }
+]);
+
+appControllers.controller('BookmarkDetailController', [
+    '$scope',
+    function($scope) {
+        
+    }
+]);
