@@ -1,4 +1,4 @@
-# Final Project for CS498rk
+# Final Project for CS498rk // [spec](https://docs.google.com/document/d/1ZdUtaQzpfLx6cxa_bGdlcDqZskYzjxD2V9enE9EAcOU/edit#heading=h.qvspg8vwq22d)
 
 ## Running the Project
 First, set up the app configuration. Find out how in [`app/config/default`](app/config/default).
