@@ -26,3 +26,48 @@ input, textarea, select, textarea {
 .userForm {
 	margin-top: 110px;
 }
+
+.inline {
+	display: inline-block;
+}
+
+.controlButton {
+	float: right;
+	margin: 0 4px;
+}
+
+.stack {
+	display: block;
+	width: 204px;
+	height: 204px;
+	background: #fff;
+	margin: 10px 0;
+}
+
+.stackItem {
+	display: inline-block;
+	width: 36px;
+	height: 36px;
+	background: #ccc;
+	margin: 10px 8px;
+	border-radius: 2px;
+	padding: 2px;
+}
+
+.detailStackItem {
+	display: inline-block;
+	background: #ccc;
+	margin: 10px 8px;
+	border-radius: 4px;
+	padding: 2px;
+}
+
+.bookmarkPic {
+	position: relative;
+	top: -10px;
+}
+
+.comment {
+	padding: 8px;
+	margin: 20px;
+}
