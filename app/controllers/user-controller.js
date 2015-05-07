@@ -10,12 +10,12 @@ exports.getUsers = function(data, callback) {
 };
 
 exports.createUser = function(data, callback) {
-    var user = new User({
+    var newUser = new User({
         username: data.username,
         email: data.email,
         password: data.password
     });
-    user.save(function(err) {
+    newUser.save(function(err, user) {
         callback(err, user);
     });
 };
