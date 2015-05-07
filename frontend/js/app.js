@@ -27,8 +27,16 @@ app.config([
             controller: 'ProfileController'
         })
         .when('/profile/:username', {
-            templateUrl: 'partials/otherprofile.html',
+            templateUrl: 'partials/otherProfile.html',
             controller: 'OtherProfileController'
+        })
+        .when('/stacks/:id', {
+            templateUrl: 'partials/stackDetail.html',
+            controller: 'stackDetailController'
+        })
+        .when('/bookmarks/:id', {
+            templateUrl: 'partials/bookmarkDetail.html',
+            controller: 'bookmarkDetailController'
         })
         .when('/logout', {
             template: ' ',
