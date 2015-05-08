@@ -2,6 +2,11 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 var Schema = mongoose.Schema;
 
+// subdocument schema
+var FriendSchema = new Schema({
+    friend_id: String,
+    friend_name: String
+});
 
 var UserSchema = new Schema({
     username: {
@@ -17,7 +22,11 @@ var UserSchema = new Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    rootStack: {
+        type: String
+    },
+    friends: [FriendSchema]
 });
 
 

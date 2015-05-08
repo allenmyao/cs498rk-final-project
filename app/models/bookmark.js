@@ -3,11 +3,11 @@ var Schema = mongoose.Schema;
 
 
 var BookmarkSchema = new Schema({
-    owner: {
+    owner_id: {
         type: String,
         required: true
     },
-    stack: {
+    stack_id: {
         type: String,
         required: true
     },

@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 
 var StackSchema = new Schema({
-    owner: {
+    owner_id: {
         type: String,
         required: true
     },

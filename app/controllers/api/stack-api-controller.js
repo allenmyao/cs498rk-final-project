@@ -1,35 +1,27 @@
 var stackController = require('./../stack-controller');
-
+var respond = require('./utils').respond;
 
 exports.getStacks = function(req, res, next) {
-    stackController.getStacks(function(err, stacks) {
+    stackController.getStacks(function(err, stacks, errorMessage) {
         if (err) {
-            res.status(500).json({
-                message: 'Error encountered while retrieving stacks',
-                error: err
-            });
+            res.status(500);
         } else {
-            res.status(200).json({
-                message: 'Successfully retrieved stacks',
-                data: stacks
-            });
+            res.status(200);
         }
+        errorMessage = errorMessage || "Error encountered while retrieving stacks.";
+        respond(res, stacks, err, errorMessage);
     })
 };
 
 exports.postStacks = function(req, res, next) {
-    stackController.createStack(req.body, function(err, stack) {
+    stackController.createStack(req.body, function(err, stack, errorMessage) {
         if (err) {
-            res.status(500).json({
-                message: 'Error encountered while creating stack',
-                error: err
-            });
+            res.status(500);
         } else {
-            res.status(200).json({
-                message: 'Successfully created stack',
-                data: stack
-            });
+            res.status(200);
         }
+        errorMessage = errorMessage || "Error encountered while creating stack.";
+        respond(res, stack, err, errorMessage);
     });
 };
 
@@ -38,49 +30,37 @@ exports.optionsStacks = function(req, res, next) {
 };
 
 exports.getStack = function(req, res, next) {
-    stackController.getStack(req.params.stack_id, function(err, stack) {
+    stackController.getStack(req.params.stack_id, function(err, stack, errorMessage) {
         if (err) {
-            res.status(500).json({
-                message: 'Error encountered while retrieving stack',
-                error: err
-            });
+            res.status(500);
         } else {
-            res.status(200).json({
-                message: 'Successfully retrieved stack',
-                data: stack
-            });
+            res.status(200);
         }
+        errorMessage = errorMessage || "Error encountered while retrieving stack.";
+        respond(res, stack, err, errorMessage);
     });
 };
 
 exports.putStack = function(req, res, next) {
-    stackController.updateStack(req.params.stack_id, req.body, function(err, stack) {
+    stackController.updateStack(req.params.stack_id, req.body, function(err, stack, errorMessage) {
         if (err) {
-            res.status(500).json({
-                message: 'Error encountered while updating stack',
-                error: err
-            });
+            res.status(500);
         } else {
-            res.status(200).json({
-                message: 'Successfully updated stack',
-                data: stack
-            });
+            res.status(200);
         }
+        errorMessage = errorMessage || "Error encountered while updating stack.";
+        respond(res, stack, err, errorMessage);
     });
 };
 
 exports.deleteStack = function(req, res, next) {
-    stackController.deleteStack(req.params.stack_id, function(err, stack) {
+    stackController.deleteStack(req.params.stack_id, function(err, stack, errorMessage) {
         if (err) {
-            res.status(500).json({
-                message: 'Error',
-                error: err
-            });
+            res.status(500);
         } else {
-            res.status(200).json({
-                message: 'Successfully deleted stack',
-                data: stack
-            });
+            res.status(200);
         }
+        errorMessage = errorMessage || "Error encountered while deleting stack.";
+        respond(res, stack, err, errorMessage);
     });
 };

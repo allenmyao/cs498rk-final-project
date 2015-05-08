@@ -1,35 +1,27 @@
 var commentController = require('./../comment-controller');
-
+var respond = require('./utils').respond;
 
 exports.getComments = function(req, res, next) {
-    commentController.getComments(function(err, comments) {
+    commentController.getComments(function(err, comments, errorMessage) {
         if (err) {
-            res.status(500).json({
-                message: 'Error encountered while retrieving comments',
-                error: err
-            });
+            res.status(500);
         } else {
-            res.status(200).json({
-                message: 'Successfully retrieved comments',
-                data: comments
-            });
+            res.status(200);
         }
+        errorMessage = errorMessage || "Error encountered while retrieving comments.";
+        respond(res, comments, err, errorMessage);
     })
 };
 
 exports.postComments = function(req, res, next) {
-    commentController.createComment(req.body, function(err, comment) {
+    commentController.createComment(req.body, function(err, comment, errorMessage) {
         if (err) {
-            res.status(500).json({
-                message: 'Error encountered while creating comment',
-                error: err
-            });
+            res.status(500);
         } else {
-            res.status(200).json({
-                message: 'Successfully created comment',
-                data: comment
-            });
+            res.status(200);
         }
+        errorMessage = errorMessage || "Error encountered while creating comment.";
+        respond(res, comment, err, errorMessage);
     });
 };
 
@@ -38,49 +30,37 @@ exports.optionsComments = function(req, res, next) {
 };
 
 exports.getComment = function(req, res, next) {
-    commentController.getComment(req.params.comment_id, function(err, comment) {
+    commentController.getComment(req.params.comment_id, function(err, comment, errorMessage) {
         if (err) {
-            res.status(500).json({
-                message: 'Error encountered while retrieving comment',
-                error: err
-            });
+            res.status(500);
         } else {
-            res.status(200).json({
-                message: 'Successfully retrieved comment',
-                data: comment
-            });
+            res.status(200);
         }
+        errorMessage = errorMessage || "Error encountered while retrieving comment.";
+        respond(res, comment, err, errorMessage);
     });
 };
 
 exports.putComment = function(req, res, next) {
-    commentController.updateComment(req.params.comment_id, req.body, function(err, comment) {
+    commentController.updateComment(req.params.comment_id, req.body, function(err, comment, errorMessage) {
         if (err) {
-            res.status(500).json({
-                message: 'Error encountered while updating comment',
-                error: err
-            });
+            res.status(500);
         } else {
-            res.status(200).json({
-                message: 'Successfully updated comment',
-                data: comment
-            });
+            res.status(200);
         }
+        errorMessage = errorMessage || "Error encountered while updating comment.";
+        respond(res, comment, err, errorMessage);
     });
 };
 
 exports.deleteComment = function(req, res, next) {
-    commentController.deleteComment(req.params.comment_id, function(err, comment) {
+    commentController.deleteComment(req.params.comment_id, function(err, comment, errorMessage) {
         if (err) {
-            res.status(500).json({
-                message: 'Error',
-                error: err
-            });
+            res.status(500);
         } else {
-            res.status(200).json({
-                message: 'Successfully deleted comment',
-                data: comment
-            });
+            res.status(200);
         }
+        errorMessage = errorMessage || "Error encountered while deleting comment.";
+        respond(res, comment, err, errorMessage);
     });
 };

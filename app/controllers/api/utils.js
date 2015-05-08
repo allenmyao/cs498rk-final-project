@@ -1,10 +1,20 @@
 module.exports = {
+
+    /**
+        Respond to a request. Include error message when necessary. 
+        Caller must set response status or other header options before calling
+        this function.
+        
+        @param res response obj
+        @param data data to send in the response
+        @param error 
+        @param errorMessage optional, message to send in case there's an error. 
+                            default - the error's string representation
+    */
     respond: function(res, data, error, errorMessage) {
-        // res: response obj
-        // data: data to send in the response
-        // error: optional
-        // errorMessage: optional, message to send in case there's an error 
-        //     default - the error's string representation
+        if (error == null && data == null) {
+            console.log("WARNING - error and data are both NULL.");
+        }
 
         data = data || {};
         var message;

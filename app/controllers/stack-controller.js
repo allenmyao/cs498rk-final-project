@@ -1,5 +1,6 @@
 var models = require('./../models');
 var Stack = models.Stack;
+var Bookmark = models.Bookmark;
 
 
 exports.getStacks = function(callback) {
@@ -18,27 +19,34 @@ exports.createStack = function(data, callback) {
 };
 
 exports.getStack = function(id, callback) {
-    Stack
-        .findById(id)
+    Stack.findById(id)
         .exec(function(err, stack) {
             callback(err, stack);
         });
 };
 
 exports.updateStack = function(id, data, callback) {
-    Stack
-        .findById(id)
-        .update(data)
-        .exec(function(err, stack) {
-            callback(err, stack);
-        });
+    Stack.findOneAndUpdate(id, data, function(err, stack) {
+        callback(err, stack);
+    });
 };
 
 exports.deleteStack = function(id, callback) {
-    Stack
-        .findById(id)
-        .remove()
-        .exec(function(err, stack) {
-            callback(err, stack);
-        });
+    Stack.findById(id, function(err, stack) {
+        if (!err) {
+            stack.remove(function(err, removed) {
+                if (!err) {
+                    Bookmark.remove({
+                        "stack_id": id
+                    }, function(err, num_removed) {
+                        callback(err, num_removed, "Failed to remove the bookmarks in the deleted the stack.");
+                    });
+                } else {
+                    callback(err, bookmark, "Failed to delete the stack.");
+                }
+            });
+        } else {
+            callback(err, bookmark, "Failed to find the stack to delete");
+        }
+    });
 };
