@@ -41,11 +41,10 @@
 
 
 		  <div class="modal fade custom-modal" id="addStackModal" tabindex="-1" role="dialog" aria-hidden="true">
-		    <form class="form-inline custom-form">
+		    <form class="form-inline custom-form" data-ng-submit="submitStackForm()">
 		      <h3>Create a new Stack</h3>
 		      <input type="text" class="modalField" required placeholder="Name" name="name">
-		      
-		      <div ng-dropdown-multiselect="" options="tags" selected-model="selectedTags"></div>
+		      <!-- <div ng-dropdown-multiselect="" options="tags" selected-model="selectedTags"></div> -->
 		      <input type="submit" class="btn btn-success" value="Create Stack">
 		      <input type="button" data-dismiss="modal" class="btn btn-danger" value="Close">
 		    </form>
