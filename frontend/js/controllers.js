@@ -1,6 +1,22 @@
 var appControllers = angular.module('appControllers', []);
 
 
+appControllers.controller('MainController', [
+    '$scope',
+    'Auth',
+    function($scope, Auth) {
+        function checkIfLoggedIn() {
+            $scope.currentUser = Auth.getUser();
+            $scope.isLoggedIn = !!$scope.currentUser;
+            console.log('MainController');
+            console.log($scope.currentUser);
+        }
+
+        $scope.$on('login', checkIfLoggedIn);
+        $scope.$on('logout', checkIfLoggedIn);
+    }
+]);
+
 appControllers.controller('HomepageController', [
     '$scope',
     function($scope) {
@@ -34,6 +50,7 @@ appControllers.controller('LoginController', [
             Auth.login($scope.user).success(function(data) {
                 if (data) {
                     Auth.setUser(data);
+                    $scope.$emit('login');
                     redirectIfLoggedIn();
                 } else {
                     console.log('No data returned from /login');
@@ -68,6 +85,7 @@ appControllers.controller('SignupController', [
             Auth.signup($scope.user).success(function(data) {
                 if (data) {
                     Auth.setUser(data);
+                    $scope.$emit('login');
                     redirectIfLoggedIn();
                 } else {
                     console.log('No data returned from /signup');
@@ -84,9 +102,15 @@ appControllers.controller('ProfileController', [
     '$routeParams',
     'Auth',
     function($scope, $routeParams, Auth) {
+    }
+]);
+
+appControllers.controller('ProfileController', [
+    '$scope',
+    '$routeParams',
+    'Auth',
+    function($scope, $routeParams, Auth) {
         $scope.username = $routeParams.username;
-        $scope.currentUser = Auth.getUser();
-        $scope.isLoggedIn = !!$scope.currentUser;
     }
 ]);
 
@@ -96,8 +120,9 @@ appControllers.controller('LogoutController', [
     function($location, Auth) {
         if (!Auth.getUser) $location.url('/');
         Auth.logout().success(function(data) {
-            console.log('Logged out');
             Auth.setUser('');
+            $scope.$emit('logout');
+            console.log('Logged out');
             $location.url('/');
         }).error(function(data) {
             console.log('Failed to logout');
