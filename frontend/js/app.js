@@ -52,6 +52,8 @@ app.config([
 app.run([
     '$window',
     function($window) {
-        $window.sessionStorage.user = '';
+        console.log($window.sessionStorage);
+        if (!"user" in $window.sessionStorage)
+            $window.sessionStorage.user = '';
     }
 ]);
