@@ -4,7 +4,12 @@ var appControllers = angular.module('appControllers', []);
 appControllers.controller('HomepageController', [
     '$scope',
     function($scope) {
-        
+        $scope.submitBookmarkForm = function() {
+            // Create new stack with name = $scope.name
+        };
+        $scope.submitStackForm = function() {
+            // Create new stack with name = $scope.name
+        };
     }
 ]);
 
