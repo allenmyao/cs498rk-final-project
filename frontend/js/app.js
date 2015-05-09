@@ -11,31 +11,31 @@ app.config([
     function($routeProvider) {
         $routeProvider
         .when('/', {
-            templateUrl: 'partials/home.html',
+            templateUrl: 'partials/main/home.html',
             controller: 'HomepageController'
         })
         .when('/login', {
-            templateUrl: 'partials/login.html',
+            templateUrl: 'partials/main/login.html',
             controller: 'LoginController'
         })
         .when('/signup', {
-            templateUrl: 'partials/signup.html',
+            templateUrl: 'partials/main/signup.html',
             controller: 'SignupController'
         })
         .when('/profile', {
-            templateUrl: 'partials/profile.html',
+            templateUrl: 'partials/profile/profile.html',
             controller: 'ProfileController'
         })
         .when('/profile/:username', {
-            templateUrl: 'partials/otherProfile.html',
+            templateUrl: 'partials/profile/otherProfile.html',
             controller: 'OtherProfileController'
         })
         .when('/stacks/:id', {
-            templateUrl: 'partials/stackDetail.html',
+            templateUrl: 'partials/stack/stackDetail.html',
             controller: 'stackDetailController'
         })
         .when('/bookmarks/:id', {
-            templateUrl: 'partials/bookmarkDetail.html',
+            templateUrl: 'partials/bookmark/bookmarkDetail.html',
             controller: 'bookmarkDetailController'
         })
         .when('/logout', {
