@@ -37,11 +37,12 @@ input, textarea, select, textarea {
 }
 
 .stack {
-	display: block;
+	// display: block;
+	float: left;
 	width: 204px;
 	height: 204px;
 	background: #fff;
-	margin: 10px 0;
+	margin: 10px;
 }
 
 .stackItem {
