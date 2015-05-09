@@ -1,7 +1,14 @@
 <div>
-  <h1><span data-ng-bind=""></span>&apos;s profile</h1>
+  <h1><span data-ng-bind="otherUser.name"></span>&apos;s profile</h1>
+  <form class="form-inline custom-form" data-ng-submit="addFriendForm()">
+	  <input type="submit" class="btn btn-success" value="Add Friend">
+  </form>
+  <!-- Todo - add is_friend check -->
+  <!-- <form ng-hide="is_friend_idk" class="form-inline custom-form" data-ng-submit="removeFriendForm()">
+	  <input type="submit" class="btn btn-success" value="Remove Friend">
+  </form> -->
   <div class="grid">
-		<div class="stack well">
+		<div ng-repeat="stack in otherStacks" class="stack well">
 			<a href="#"><h3>Stack Title</h3></a>
 			<p>Creator, Aug 2 2:40pm</p>
 			<a href="#" class="stackItem"><img src="http://placehold.it/32x32"></a>

@@ -12,15 +12,13 @@
 			-->
 		</div>
 		<div class="grid">
-			<div ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]" class="stack well">
-				<a href="#"><h3>Stack Title</h3></a>
-				<p>Creator, Aug 2 2:40pm</p>
-				<a href="#" class="stackItem"><img src="http://placehold.it/32x32"></a>
-				<a href="#" class="stackItem"><img src="http://placehold.it/32x32"></a>
-				<a href="#" class="stackItem"><img src="http://placehold.it/32x32"></a>
-				<a href="#" class="stackItem"><img src="http://placehold.it/32x32"></a>
-				<a href="#" class="stackItem"><img src="http://placehold.it/32x32"></a>
-				<a href="#" class="stackItem"><img src="http://placehold.it/32x32"></a>
+			<div ng-repeat="stack in stacks" class="stack well">
+				<a ng-href="#/stacks/{{stack._id}}"><h3 data-ng-bind="stack.name">.</h3></a>
+				<a ng-href="#/users/{{user._id}}"><p data-ng-bind="user.name">, </p></a><p data-ng-bind="stack.createdAt">.</p>
+
+				<div ng-repeat="bookmark in bookmarks" class="stack well">
+					<a ng-href="{{bookmark.url}}" class="stackItem"><img src="http://placehold.it/128x128"></a>
+				</div>
 			</div>
 			<div class="modal fade custom-modal" id="addLinkModal" tabindex="-1" role="dialog" aria-hidden="true">
 		    <form class="form-inline custom-form" data-ng-submit="submitBookmarkForm()">
