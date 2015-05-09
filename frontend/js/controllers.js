@@ -11,6 +11,7 @@ appControllers.controller('MainController', [
             console.log('MainController');
             console.log($scope.currentUser);
         }
+        checkIfLoggedIn();
 
         $scope.$on('login', checkIfLoggedIn);
         $scope.$on('logout', checkIfLoggedIn);
