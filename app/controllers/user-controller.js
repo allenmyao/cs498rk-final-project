@@ -28,11 +28,9 @@ exports.getUser = function(id, callback) {
 };
 
 exports.updateUser = function(id, data, callback) {
-    User.findById(id)
-        .update(data, { overwrite: true })
-        .exec(function(err, user) {
-            callback(err, user);
-        });
+    User.findOneAndUpdate(id, data, function(err, user) {
+        callback(err, user);
+    });
 };
 
 exports.deleteUser = function(id, callback) {
