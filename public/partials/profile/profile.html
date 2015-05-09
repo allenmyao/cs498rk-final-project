@@ -1,9 +1,36 @@
 <div>
-    <div data-ng-show="isLoggedIn">
-        <h1><span data-ng-bind="currentUser.username"></span>&apos;s profile</h1>
-        <div></div>
-    </div>
-    <div data-ng-hide="isLoggedIn">
-        <h1>Not logged in</h1>
-    </div>
+  <div data-ng-show="isLoggedIn">
+    <h1><span data-ng-bind="currentUser.username"></span>&apos;s profile</h1>
+    <div class="grid">
+			<div ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]" class="stack well">
+				<a href="#"><h3>Stack Title</h3></a>
+				<p>Creator, Aug 2 2:40pm</p>
+				<a href="#" class="stackItem"><img src="http://placehold.it/32x32"></a>
+				<a href="#" class="stackItem"><img src="http://placehold.it/32x32"></a>
+				<a href="#" class="stackItem"><img src="http://placehold.it/32x32"></a>
+				<a href="#" class="stackItem"><img src="http://placehold.it/32x32"></a>
+				<a href="#" class="stackItem"><img src="http://placehold.it/32x32"></a>
+				<a href="#" class="stackItem"><img src="http://placehold.it/32x32"></a>
+			</div>
+			<div class="modal fade custom-modal" id="addLinkModal" tabindex="-1" role="dialog" aria-hidden="true">
+		  <form class="form-inline custom-form">
+		    <h3>Add New Bookmark</h3>
+		    <input type="text" class="modalField" required placeholder="Name" name="name">
+		    <input type="text" class="modalField" required placeholder="URL" name="url">
+		    <!-- <select name="addToStack">
+		    <option value="" disabled selected>Add to Stack</option>
+		    	<div ng-repeat="stack in stacks">
+	    		<option value="{{name}}">{{name}}</option>
+	    	</div>
+		    </select> -->
+		    <div ng-dropdown-multiselect="" options="tags" selected-model="selectedTags"></div>
+		    <input type="submit" class="btn btn-success" value="Add Bookmark">
+		    <input type="button" data-dismiss="modal" class="btn btn-danger" value="Close">
+		  </form>
+		  </div>
+		</div>	
+  </div>
+  <div data-ng-hide="isLoggedIn">
+    <h1>Not logged in</h1>
+  </div>
 </div>
