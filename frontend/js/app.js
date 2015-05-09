@@ -34,9 +34,9 @@ app.config([
             templateUrl: 'partials/stack/stackDetail.html',
             controller: 'stackDetailController'
         })
-        .when('/bookmarks/:id', {
-            templateUrl: 'partials/bookmark/bookmarkDetail.html',
-            controller: 'bookmarkDetailController'
+        .when('/stacks/:id/edit', {
+            templateUrl: 'partials/stack/stackEdit.html',
+            controller: 'stackEditController'
         })
         .when('/logout', {
             template: ' ',
