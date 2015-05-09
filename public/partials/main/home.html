@@ -2,7 +2,14 @@
 	<div class="col-md-12 well">
 		<div class="header">
 			<button class="btn btn-default" data-toggle="modal" data-target="#addLinkModal">Add New Link</button>
-			<a href="" onclick="newStack()"><button class="btn btn-default">Create New Stack</button>
+			<button class="btn btn-default" data-toggle="modal" data-target="#addStackModal">Create New Stack</button>
+			<!--
+			<form data-ng-submit="submitForm()">
+			<button class="btn btn-default" type="submit">Create New Stack</button>
+			<label>Stack title:</label>
+            <input class="form-control" type="text" data-ng-model="newstack.name">
+            </form>
+			-->
 		</div>
 		<div class="grid">
 			<div ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]" class="stack well">
@@ -31,6 +38,20 @@
 		      <input type="button" data-dismiss="modal" class="btn btn-danger" value="Close">
 		    </form>
 		  </div>
+
+
+		  <div class="modal fade custom-modal" id="addStackModal" tabindex="-1" role="dialog" aria-hidden="true">
+		    <form class="form-inline custom-form">
+		      <h3>Create a new Stack</h3>
+		      <input type="text" class="modalField" required placeholder="Name" name="name">
+		      
+		      <div ng-dropdown-multiselect="" options="tags" selected-model="selectedTags"></div>
+		      <input type="submit" class="btn btn-success" value="Create Stack">
+		      <input type="button" data-dismiss="modal" class="btn btn-danger" value="Close">
+		    </form>
+		  </div>
+
+
 		</div>			
 	</div>
 </div>
