@@ -109,13 +109,64 @@ appControllers.controller('LogoutController', [
 appControllers.controller('StackDetailController', [
     '$scope',
     function($scope) {
-        
+        $scope.stackId = $routeParams.stackId;
+
+        // Get the stack
+        // $scope.stack
+
+        // Get the user data from owner_id
+        // $scope.owner
+
+        // Get the comment data from stack's comment ids
+        // $scope.comments
+
+        // Get bookmarks (name, url) from stack.bookmarks._id 
+        // $scope.bookmarks
+
+        // $http.get(baseUrl+'/api/stacks/'+$routeParams.stackId).success(function(data) {
+        //     $scope.stack = data.data;
+        // });
+
+        $scope.submitCommentForm = function() {
+            // Create new comment with params
+        };
     }
 ]);
 
-appControllers.controller('BookmarkDetailController', [
+appControllers.controller('StackEditController', [
     '$scope',
     function($scope) {
-        
+        $scope.stackId = $routeParams.stackId;
+
+        // Get the stack
+        // $scope.stack
+
+        // Get the user data from owner_id
+        // $scope.owner
+
+        // Get the comment data from stack's comment ids
+        // $scope.comments
+
+        // Get bookmarks (name, url) from stack.bookmarks._id 
+        // $scope.bookmarks
+
+        // $http.get(baseUrl+'/api/stacks/'+$routeParams.stackId).success(function(data) {
+        //     $scope.stack = data.data;
+        // });
+
+        $scope.submitForm = function() {
+            // Save stack with changes
+        };
+    }
+]);
+
+appControllers.controller('OtherProfileController', [
+    '$scope',
+    function($scope) {
+        // Get the user from route param
+        // $scope.otherUser
+
+        // Get their stacks
+        // $scope.otherStacks
     }
 ]);
