@@ -15,7 +15,6 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true, // dynamic (recursive) src->dest mapping
-            flatten: true, // remove unnecessary nesting
             cwd: 'frontend/js',
             src: ['**/*.js'],
             dest: 'public/js',

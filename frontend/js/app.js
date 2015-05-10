@@ -22,6 +22,10 @@ app.config([
             templateUrl: 'partials/main/signup.html',
             controller: 'SignupController'
         })
+        .when('/logout', {
+            template: ' ',
+            controller: 'LogoutController'
+        })
         .when('/profile', {
             templateUrl: 'partials/profile/profile.html',
             controller: 'ProfileController'
@@ -32,15 +36,11 @@ app.config([
         })
         .when('/stacks/:id', {
             templateUrl: 'partials/stack/stackDetail.html',
-            controller: 'stackDetailController'
+            controller: 'StackDetailController'
         })
         .when('/stacks/:id/edit', {
             templateUrl: 'partials/stack/stackEdit.html',
-            controller: 'stackEditController'
-        })
-        .when('/logout', {
-            template: ' ',
-            controller: 'LogoutController'
+            controller: 'StackEditController'
         })
         .otherwise({
             redirectTo: '/'
@@ -52,7 +52,6 @@ app.config([
 app.run([
     '$window',
     function($window) {
-        console.log($window.sessionStorage);
         if (!"user" in $window.sessionStorage)
             $window.sessionStorage.user = '';
     }
