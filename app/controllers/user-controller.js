@@ -1,6 +1,6 @@
 var models = require('./../models');
 var User = models.User;
-
+var Stack = models.Stack;
 
 exports.getUsers = function(data, callback) {
     User.find(data)
@@ -16,7 +16,26 @@ exports.createUser = function(data, callback) {
         password: data.password
     });
     newUser.save(function(err, user) {
-        callback(err, user);
+        if (!err) {
+            // create the root stack
+            var rootStack = new Stack({
+                "owner_id": user._id,
+                "name": "Root stack for " + user.username
+            });
+            rootStack.save(function(err, stack) {
+                if (!err) {
+                    // update user's rootStack field
+                    user["rootStack"] = stack._id;
+                    user.save(function(err, user) {
+                        callback(err, user);
+                    });
+                } else {
+                    callback(err, user, "Could not create the root stack at this time");
+                }
+            });
+        } else {
+            callback(err, user);
+        }
     });
 };
 
