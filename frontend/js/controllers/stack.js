@@ -4,19 +4,23 @@ var appControllers = angular.module('appControllers');
 appControllers.controller('StackDetailController', [
     '$scope',
     '$routeParams',
+    'Auth',
     'Bookmarks',
     'Comments',
     'Stacks',
     'Tags',
     'Users',
-    function($scope, $routeParams, Bookmarks, Comments, Stacks, Tags, Users) {
+    function($scope, $routeParams, Auth, Bookmarks, Comments, Stacks, Tags, Users) {
         $scope.stackId = $routeParams.id;
         $scope.stack = {};
-
+        var currentUser = Auth.getUser();
+        $scope.currentUser = currentUser;
 
         Stacks.getOne($scope.stackId).success(function(data) {
             var stack = data.data;
             $scope.stack = stack;
+            $scope.isCurrentUserStack = currentUser._id == stack.owner_id;
+            console.log('Stack belongs to current user: ' + $scope.isCurrentUserStack);
 
             var params = {
                 where: {

@@ -3,7 +3,7 @@
 		<div class="header">
 			<h1><input data-ng-bind="stack.name" class="inline"></input>.</h1>
 			<button type="submit" class="btn btn-warning inline controlButton">Save Stack</button>
-			<p>Author: <a data-ng-bind="owner.name" ng-href="#/profile/{{owner._id}}">.</a></p>
+			<p>Author: <a data-ng-bind="owner.username" ng-href="#/profile/{{owner._id}}">.</a></p>
 			<p>Last updated at <span data-ng-bind="stack.lastUpdated"></span>.</p>
 			<textarea data-ng-bind="stack.description"></textarea>
 		</div>
