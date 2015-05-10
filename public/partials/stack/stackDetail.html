@@ -1,9 +1,9 @@
 <div class="row">
 	<div class="col-md-8 well">
 		<div class="header">
-			<h1><span data-ng-bind="stack.name" class="inline"></span>.</h1>
-			<button class="btn btn-danger inline controlButton">Delete Stack</button>
-			<button class="btn btn-warning inline controlButton">Edit Stack</button>
+			<h1 class="inline"><span data-ng-bind="stack.name"></span>.</h1>
+			<a ng-click="deleteStack()"><button class="btn btn-danger inline controlButton">Delete Stack</button></a>
+			<a href="/#/stacks/{{stack.id}}/edit"><button class="btn btn-warning inline controlButton">Edit Stack</button></a>
 			<p>Author: <a data-ng-bind="owner.username" ng-href="#/profile/{{owner._id}}">.</a></p>
 			<p>Last updated at <span data-ng-bind="stack.lastUpdated"></span>.</p>
 			
