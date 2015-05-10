@@ -27,7 +27,7 @@ exports.postUsers = function(req, res, next) {
                 data: {}
             });
         } else {
-            res.status(200).json({
+            res.status(201).json({
                 message: 'Successfully created user',
                 data: newUser
             });

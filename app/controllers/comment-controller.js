@@ -2,11 +2,15 @@ var models = require('./../models');
 var Comment = models.Comment;
 
 
-exports.getComments = function(callback) {
+exports.getComments = function(params, callback) {
     Comment
-        .find()
+        .find(params.where)
+        .select(params.select)
+        .sort(params.sort)
+        .skip(params.skip)
+        .limit(params.limit)
         .exec(function(err, comments) {
-            callback(err, comments);
+            callback(err, params.count ? comments.length : comments);
         });
 };
 

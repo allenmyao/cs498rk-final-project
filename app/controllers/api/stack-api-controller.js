@@ -2,7 +2,27 @@ var stackController = require('./../stack-controller');
 var respond = require('./utils').respond;
 
 exports.getStacks = function(req, res, next) {
-    stackController.getStacks(function(err, stacks, errorMessage) {
+    var where  = req.query.where  ? JSON.parse(req.query.where)  : {};
+    var sort   = req.query.sort   ? JSON.parse(req.query.sort)   : {};
+    var select = req.query.select ? JSON.parse(req.query.select) : {};
+    var skip   = req.query.skip   ? parseInt(req.query.skip)     : 0;
+    var limit  = req.query.limit  ? parseInt(req.query.limit)    : 0;
+    var count  = req.query.count  ? req.query.count === 'true'   : false;
+    var params = {
+        where: where,
+        sort: sort,
+        select: select,
+        skip: skip,
+        limit: limit,
+        count: count
+    };
+    console.log(params);
+    // Check for private stacks
+    // params.where = { $and: [
+    //     params.where,
+    //     { $or:  [ { private: false }, { $eq: { owner_id: req.user._id } } ] }
+    // ] }
+    stackController.getStacks(params, function(err, stacks, errorMessage) {
         if (err) {
             res.status(500);
         } else {
@@ -18,7 +38,7 @@ exports.postStacks = function(req, res, next) {
         if (err) {
             res.status(500);
         } else {
-            res.status(200);
+            res.status(201);
         }
         errorMessage = errorMessage || "Error encountered while creating stack.";
         respond(res, stack, err, errorMessage);

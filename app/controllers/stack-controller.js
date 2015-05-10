@@ -3,11 +3,15 @@ var Stack = models.Stack;
 var Bookmark = models.Bookmark;
 
 
-exports.getStacks = function(callback) {
+exports.getStacks = function(params, callback) {
     Stack
-        .find()
+        .find(params.where)
+        .select(params.select)
+        .sort(params.sort)
+        .skip(params.skip)
+        .limit(params.limit)
         .exec(function(err, stacks) {
-            callback(err, stacks);
+            callback(err, params.count ? stacks.length : stacks);
         });
 };
 

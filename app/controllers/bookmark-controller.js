@@ -2,11 +2,15 @@ var models = require('./../models');
 var Bookmark = models.Bookmark;
 var Stack = models.Stack;
 
-exports.getBookmarks = function(callback) {
+exports.getBookmarks = function(params, callback) {
     Bookmark
-        .find()
+        .find(params.where)
+        .select(params.select)
+        .sort(params.sort)
+        .skip(params.skip)
+        .limit(params.limit)
         .exec(function(err, bookmarks) {
-            callback(err, bookmarks);
+            callback(err, params.count ? bookmarks.length : bookmarks);
         });
 };
 

@@ -12,6 +12,9 @@ module.exports = {
                             default - the error's string representation
     */
     respond: function(res, data, error, errorMessage) {
+        if (error) {
+            console.log(error);
+        }
         if (error == null && data == null) {
             console.log("WARNING - error and data are both NULL.");
         }
