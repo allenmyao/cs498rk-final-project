@@ -1,10 +1,10 @@
 <div>
     <div data-ng-if="isLoggedIn">
         <div class="header">
-            <h1><span data-ng-bind="currentUser.username"></span>&apos;s profile</h1>
+            <h1 class="inline"><span data-ng-bind="currentUser.username"></span>&apos;s profile</h1>
 
-            <button class="btn btn-default" data-toggle="modal" data-target="#addLinkModal">Add New Link</button>
-            <button class="btn btn-default" data-toggle="modal" data-target="#addStackModal">Create New Stack</button>
+            <button class="btn btn-default upline" data-toggle="modal" data-target="#addLinkModal">Add New Link</button>
+            <button class="btn btn-default upline" data-toggle="modal" data-target="#addStackModal">Create New Stack</button>
             <div add-bookmark-modal></div>
             <div add-stack-modal></div>
         </div>
