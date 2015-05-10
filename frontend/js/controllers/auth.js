@@ -74,7 +74,7 @@ appControllers.controller('LogoutController', [
     '$location',
     'Auth',
     function($scope, $location, Auth) {
-        if (!Auth.getUser) $location.url('/');
+        if (!Auth.getUser()) $location.url('/');
         Auth.logout().success(function(data) {
             Auth.setUser('');
             $scope.$emit('logout');
