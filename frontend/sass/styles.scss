@@ -21,6 +21,12 @@ textarea {
   display: inline-block;
 }
 
+.upline {
+  @extend .inline;
+  position: relative;
+  top: -10px;
+}
+
 .controlButton {
   float: right;
   margin: 0 4px;
