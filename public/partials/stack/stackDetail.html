@@ -3,7 +3,7 @@
 		<div class="header">
 			<h1><span data-ng-bind="stack.name" class="inline"></span>.</h1>
 			<button class="btn btn-danger inline controlButton">Delete Stack</button>
-			<button class="btn btn-warning inline controlButton">Edit Stack</button>
+			<a ng-href="#/stacks/{{stack._id}}/edit" class="btn btn-warning inline controlButton">Edit Stack</a>
 			<p>Author: <a data-ng-bind="owner.username" ng-href="#/profile/{{owner._id}}">.</a></p>
 			<p>Last updated at <span data-ng-bind="stack.lastUpdated"></span>.</p>
 			
