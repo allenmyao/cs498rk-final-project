@@ -1,80 +1,89 @@
 @import "variables";
 @import "mixins";
 @import "base";
-
-
-html {
-	// base font-size
-	// 1rem = 16px
-	// rem = root em
-	font-size: 16px;
-	font-family: $font-family-sans-serif;
-}
-
+@import "block_grid";
 body {
-	// padding for navbar
-	padding-top: 70px;
-	font-family: $font-family-sans-serif;
+  // padding for navbar
+  padding-top: 70px;
+  font-family: $font-family-sans-serif;
+  color: #666;
 }
 
-input, textarea, select, textarea {
-	font-family: $font-family-sans-serif;
-
-	@include border-radius(3px);
-}
-
-.userForm {
-	margin-top: 110px;
+input,
+textarea,
+select,
+textarea {
+  font-family: $font-family-sans-serif;
+  @include border-radius(3px);
 }
 
 .inline {
-	display: inline-block;
+  display: inline-block;
 }
 
 .controlButton {
-	float: right;
-	margin: 0 4px;
+  float: right;
+  margin: 0 4px;
 }
 
 .stack {
-	// display: block;
-	float: left;
-	width: 204px;
-	height: 204px;
-	background: #fff;
-	margin: 10px;
+  // display: block;
+  float: left;
+  width: 204px;
+  height: 204px;
+  background: #fff;
+  margin: 10px;
 }
 
 .stackItem {
-	display: inline-block;
-	width: 36px;
-	height: 36px;
-	background: #ccc;
-	margin: 10px 8px;
-	border-radius: 2px;
-	padding: 2px;
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  background: #ccc;
+  margin: 10px 8px;
+  border-radius: 2px;
+  padding: 2px;
 }
 
 .detailStackItem {
-	display: inline-block;
-	background: #ccc;
-	margin: 10px 8px;
-	border-radius: 4px;
-	padding: 2px;
+  display: inline-block;
+  background: #ccc;
+  margin: 10px 8px;
+  border-radius: 4px;
+  padding: 2px;
 }
 
 .bookmarkPic {
-	position: relative;
-	top: -10px;
+  position: relative;
+  top: -10px;
 }
 
 .comment {
-	padding: 8px;
-	margin: 20px;
+  padding: 8px;
+  margin: 20px;
 }
 
 .custom-modal {
-	// position: relative;
-	padding-top: 200px;
-	text-align: center;
+  // position: relative;
+  padding-top: 200px;
+  text-align: center;
+}
+
+.text-green {
+  color: $green;
+}
+
+/* Override bootstrap navbar */
+.stackr-navbar {
+  background-color: #fff;
+  border-bottom: 2px solid $light-green;
+  .stackr-navbar-brand {
+    color: $green;
+    font-weight: 800;
+  }
+  #navbar-content {
+    a {
+      color: $green; //$color2: #93bd6a;
+    }
+  }
 }

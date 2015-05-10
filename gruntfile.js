@@ -41,7 +41,7 @@ module.exports = function(grunt) {
     watch: {
       options: { livereload: true },
       scripts: {
-        files: ['frontend/js/*.js'],
+        files: ['frontend/js/**/*.js'],
         tasks: ['clean', 'uglify']
       },
       sass: {
@@ -49,7 +49,7 @@ module.exports = function(grunt) {
         tasks: ['sass:dist']
       },
       html: {
-        files: ['frontend/views/*.jade', 'public/*.html']
+        files: ['frontend/views/*.jade', 'public/**/*.html']
       }
     },
     express: {

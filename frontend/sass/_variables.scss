@@ -1,5 +1,16 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Mono|PT+Serif:400,700);
+
 // Typography
-$font-family-sans-serif: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-sans-serif: "PT Sans", Helvetica, Arial, sans-serif;
+$font-family-serif: "PT Serif", serif;
+$font-family-mono: "PT Mono", monospace;
 
 // Default values
 $default-border-radius : 10px;
+
+$green: #539538;
+$light-green: #93bd6a;
+
+$yellow: #f0a658;
+$blue: #334b81;
+$red: #c53839;

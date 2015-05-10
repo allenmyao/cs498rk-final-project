@@ -1,21 +1,23 @@
 <!doctype html>
 <html lang="en" data-ng-app="app">
+
     <head>
 
         <title>Stackr</title>
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        
+
         <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="./lib/fontawesome/css/font-awesome.min.css">
         <link rel="shortcut icon" href="share.png" type="image/png">
 
         <link rel="stylesheet" href="./css/styles.min.css">
     </head>
+
     <body data-ng-controller="MainController">
         <div class="container">
-            <nav class="navbar navbar-inverse navbar-fixed-top">
+            <nav class="navbar navbar-default navbar-fixed-top stackr-navbar">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-content">
@@ -24,19 +26,22 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#/">Stackr</a>
+                        <a class="navbar-brand stackr-navbar-brand" href="#/">Stackr</a>
                     </div>
 
                     <div id="navbar-content" class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li><a href="#/">Home</a></li>
-                            <li data-ng-if="isLoggedIn"><a href="#/profile">Profile</a></li>
-                        </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li data-ng-if="!isLoggedIn"><a href="#/login">Log In</a></li>
-                            <li data-ng-if="isLoggedIn"><p class="navbar-text">Hello, <span data-ng-bind="currentUser.username"></span>!</p></li>
+                            <li data-ng-if="isLoggedIn">
+                                <a href="#/home">
+                                    <!-- <span data-ng-bind="currentUser.username"></span> -->
+                                    Home
+                                </a>
+                            </li>
+                            <li data-ng-if="isLoggedIn"><a href="#/profile">Profile</a></li>
+
                             <li data-ng-if="isLoggedIn" class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-gear fa-lg"></i></a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-gear fa-med"></i></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="#/profile">Profile</a></li>
                                     <li class="divider"></li>
@@ -55,7 +60,7 @@
             </nav>
 
             <main data-ng-view></main>
-        
+
         </div>
 
         <script src="./lib/jquery/dist/jquery.min.js"></script>
@@ -71,9 +76,10 @@
         <script src="./js/services.js"></script>
         <script src="./js/directives.js"></script>
         <script src="./js/settings.js"></script>
-        
+
         <script src="./js/script.js"></script>
 
         <script src="//localhost:35729/livereload.js"></script>
     </body>
+
 </html>

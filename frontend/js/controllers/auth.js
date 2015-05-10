@@ -9,7 +9,7 @@ appControllers.controller('LoginController', [
         function redirectIfLoggedIn() {
             var user = Auth.getUser();
             if (user) {
-                $location.url('/profile');
+                $location.url('/home');
             }
         }
         redirectIfLoggedIn();
@@ -70,9 +70,10 @@ appControllers.controller('SignupController', [
 ]);
 
 appControllers.controller('LogoutController', [
+    '$scope',
     '$location',
     'Auth',
-    function($location, Auth) {
+    function($scope, $location, Auth) {
         if (!Auth.getUser) $location.url('/');
         Auth.logout().success(function(data) {
             Auth.setUser('');
