@@ -10,7 +10,7 @@ appControllers.controller('StackDetailController', [
     'Tags',
     'Users',
     function($scope, $routeParams, Bookmarks, Comments, Stacks, Tags, Users) {
-        $scope.stackId = $routeParams.stackId;
+        $scope.stackId = $routeParams.id;
         $scope.stack = {};
 
 
@@ -44,7 +44,7 @@ appControllers.controller('StackDetailController', [
 
             Users.getOne(stack.owner_id).success(function(data) {
                 var user = data.data;
-                $scope.user = user;
+                $scope.owner = user;
 
             }).error(function(data) {
                 // Error getting stack owner
