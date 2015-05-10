@@ -23,5 +23,18 @@ appControllers.controller('HomepageController', [
     'Auth',
     'Stacks',
     function($scope, Auth, Stacks) {
+        var currentUser = Auth.getUser();
+        // Get friend ids
+        var params = {
+            where: {
+                owner_id: currentUser._id
+            }
+        };
+        Stacks.get(params).success(function(data) {
+            var stacks = data.data;
+            $scope.stacks = stacks;
+        }).error(function(data) {
+            // Error getting user's stacks
+        });
     }
 ]);
