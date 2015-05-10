@@ -25,6 +25,14 @@ mongoose.connect(database.url, function(err) {
     else console.log('Connected to database: ' + database.databaseName);
 });
 
+//Allow CORS so that backend and frontend could pe put on different servers
+var allowCrossDomain = function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, OPTIONS, DELETE");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept");
+    next();
+};
+app.use(allowCrossDomain);
 
 // FUTURE: uncomment after placing your favicon in /public
 // app.use(favicon(__dirname + '/public/favicon.ico'));
