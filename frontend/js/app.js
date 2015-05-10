@@ -33,7 +33,7 @@ app.config([
                 templateUrl: 'partials/profile/profile.html',
                 controller: 'ProfileController'
             })
-            .when('/profile/:username', {
+            .when('/profile/:id', {
                 templateUrl: 'partials/profile/otherProfile.html',
                 controller: 'OtherProfileController'
             })
