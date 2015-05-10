@@ -58,9 +58,21 @@ appControllers.controller('StackDetailController', [
             // Error getting stack
         });
 
-        $scope.submitCommentForm = function() {
-            // Create new comment with params
-        };
+        // $scope.submitCommentForm = function() {
+        //     // Create new comment with params
+        //     var comment = {
+        //         stack = $scope.stackId,
+        //         user = $scope.currentUser
+        //         // username $scope.currentUser.name,
+        //         // content = 
+        //     };
+
+        //     Comments.createComment(comment).success(function(data) {
+
+        //     }).error(function(data) {
+        //         // Error creating comment
+        //     });
+        // };
 
         $scope.deleteStack = function(){
             Stacks.deleteStack($scope.stackId).success(function(data) {
@@ -77,9 +89,59 @@ appControllers.controller('StackDetailController', [
 appControllers.controller('StackEditController', [
     '$scope',
     '$routeParams',
+    'Auth',
+    'Bookmarks',
+    'Comments',
     'Stacks',
-    function($scope, $routeParams, Stack) {
-        $scope.stackId = $routeParams.stackId;
+    'Tags',
+    'Users',
+    function($scope, $routeParams, Auth, Bookmarks, Comments, Stacks, Tags, Users) {
+        $scope.stackId = $routeParams.id;
+        $scope.stack = {};
+        var currentUser = Auth.getUser();
+        $scope.currentUser = currentUser;
+
+        Stacks.getOne($scope.stackId).success(function(data) {
+            var stack = data.data;
+            $scope.stack = stack;
+            $scope.isCurrentUserStack = currentUser._id == stack.owner_id;
+            console.log('Stack belongs to current user: ' + $scope.isCurrentUserStack);
+
+            var params = {
+                where: {
+                    stack_id: stack._id
+                }
+            };
+
+            // TODO: Get bookmarks (name, url) from stack.bookmarks._id 
+            Bookmarks.get(params).success(function(data) {
+                var bookmarks = data.data;
+                $scope.bookmarks = bookmarks;
+
+            }).error(function(data) {
+                // Error getting bookmarks in stack
+            });
+
+            // TODO: Get the comment data from stack's comment ids
+            Comments.get(params).success(function(data) {
+                var comments = data.data;
+                $scope.comments = comments;
+
+            }).error(function(data) {
+                // Error getting stack comments
+            });
+
+            Users.getOne(stack.owner_id).success(function(data) {
+                var user = data.data;
+                $scope.owner = user;
+
+            }).error(function(data) {
+                // Error getting stack owner
+            });
+
+        }).error(function(data) {
+            // Error getting stack
+        });
 
         // Get the stack
         // $scope.stack
@@ -97,7 +159,11 @@ appControllers.controller('StackEditController', [
         //     $scope.stack = data.data;
         // });
 
-        $scope.submitForm = function() {
+        $scope.saveStack = function() {
+            // Save stack with changes
+        };
+
+        $scope.deleteComment = function() {
             // Save stack with changes
         };
     }
