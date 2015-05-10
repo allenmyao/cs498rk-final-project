@@ -12,6 +12,10 @@ module.exports = {
                             default - the error's string representation
     */
     respond: function(res, data, error, errorMessage) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Methods", "GET, POST, PUT, OPTIONS, DELETE");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept");
+
         if (error) {
             console.log(error);
         }

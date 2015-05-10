@@ -17,9 +17,7 @@ var settings = require('./app/config/settings');
 // load all models
 var models = require('./app/models');
 
-
 var app = express();
-
 
 // connect to the database
 mongoose.connect(database.url, function(err) {
