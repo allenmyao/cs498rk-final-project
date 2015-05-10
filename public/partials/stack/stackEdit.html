@@ -4,10 +4,11 @@
 			
 			<a ng-href="#/stacks/{{stack._id}}" class="btn btn-info inline controlButton">Back</a>
 			<button type="submit" class="btn btn-warning inline controlButton">Save Stack</button>
-			<h1><input data-ng-bind="stack.name" class="inline"></input>.</h1>
+			<h1><input value="{{stack.name}}" class="inline editName"></input></h1>
 			<p>Author: <a data-ng-bind="owner.username" ng-href="#/profile/{{owner._id}}">.</a></p>
 			<p>Last updated at <span data-ng-bind="stack.lastUpdated"></span>.</p>
-			<textarea data-ng-bind="stack.description"></textarea>
+			<textarea value="{{stack.description}}" class="form-control"></textarea>
+			</br>
 		</div>
 		<div class="grid">
 			<a href="#"><button class="btn btn-success form-control">Add Bookmark</button></a>
@@ -24,13 +25,13 @@
 		<div class="comment">
 			<p>By anonmyous, on August 12, 2013:</p>
 			<p>laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non.</p>
-			<a href="#"><button class="btn btn-danger form-control">Delete Comment</button></a>
+			<a ng-click="deleteComment()"><button class="btn btn-danger form-control">Delete Comment</button></a>
 		</div>
 		<div class="comment">
 			<label>Name:</label>
-      <input class="form-control">
+      <input class="form-control" name="commenter">
       <label>Comment:</label>
-      <textarea class="form-control"></textarea>
+      <textarea class="form-control" name="commentBody"></textarea>
       </br>
       <a href="#"><button class="btn btn-success form-control">Add Comment</button></a>
 		</div>
