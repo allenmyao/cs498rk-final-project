@@ -41,7 +41,9 @@
 		  <div class="modal fade custom-modal" id="addStackModal" tabindex="-1" role="dialog" aria-hidden="true">
 		    <form class="form-inline custom-form" data-ng-submit="submitStackForm()">
 		      <h3>Create a new Stack</h3>
-		      <input type="text" class="modalField" required placeholder="Name" name="name">
+		      <input type="text" class="modalField" required placeholder="Name" data-ng-model="stack.name">
+		      <input type="color" class="modalField" data-ng-model="stack.color">
+		      <input type="checkbox" class="modalField" data-ng-model="stack.private"> Make private
 		      <!-- <div ng-dropdown-multiselect="" options="tags" selected-model="selectedTags"></div> -->
 		      <input type="submit" class="btn btn-success" value="Create Stack">
 		      <input type="button" data-dismiss="modal" class="btn btn-danger" value="Close">
