@@ -1,8 +1,10 @@
 <div class="row">
 	<form class="col-md-8 well" data-ng-submit="submitForm()">
 		<div class="header">
-			<h1><input data-ng-bind="stack.name" class="inline"></input>.</h1>
+			
+			<a ng-href="#/stacks/{{stack._id}}" class="btn btn-info inline controlButton">Back</a>
 			<button type="submit" class="btn btn-warning inline controlButton">Save Stack</button>
+			<h1><input data-ng-bind="stack.name" class="inline"></input>.</h1>
 			<p>Author: <a data-ng-bind="owner.username" ng-href="#/profile/{{owner._id}}">.</a></p>
 			<p>Last updated at <span data-ng-bind="stack.lastUpdated"></span>.</p>
 			<textarea data-ng-bind="stack.description"></textarea>
