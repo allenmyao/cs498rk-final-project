@@ -4,25 +4,54 @@ var appControllers = angular.module('appControllers');
 appControllers.controller('StackDetailController', [
     '$scope',
     '$routeParams',
+    'Bookmarks',
+    'Comments',
     'Stacks',
-    function($scope, $routeParams, Stacks) {
+    'Tags',
+    'Users',
+    function($scope, $routeParams, Bookmarks, Comments, Stacks, Tags, Users) {
         $scope.stackId = $routeParams.stackId;
+        $scope.stack = {};
 
-        // Get the stack
-        // $scope.stack
 
-        // Get the user data from owner_id
-        // $scope.owner
+        Stacks.getOne($scope.stackId).success(function(data) {
+            var stack = data.data;
+            $scope.stack = stack;
 
-        // Get the comment data from stack's comment ids
-        // $scope.comments
+            var params = {
+                where: {
+                    stack_id: stack._id
+                }
+            };
 
-        // Get bookmarks (name, url) from stack.bookmarks._id 
-        // $scope.bookmarks
+            // TODO: Get bookmarks (name, url) from stack.bookmarks._id 
+            Bookmarks.get(params).success(function(data) {
+                var bookmarks = data.data;
+                $scope.bookmarks = bookmarks;
 
-        // $http.get(baseUrl+'/api/stacks/'+$routeParams.stackId).success(function(data) {
-        //     $scope.stack = data.data;
-        // });
+            }).error(function(data) {
+                // Error getting bookmarks in stack
+            });
+
+            // TODO: Get the comment data from stack's comment ids
+            Comments.get(params).success(function(data) {
+                var comments = data.data;
+                $scope.comments = comments;
+
+            }).error(function(data) {
+                // Error getting stack comments
+            });
+
+            Users.getOne(stack.owner_id).success(function(data) {
+                var user = data.data;
+                $scope.user = user;
+
+            }).error(function(data) {
+                // Error getting stack owner
+            });
+        }).error(function(data) {
+            // Error getting stack
+        });
 
         $scope.submitCommentForm = function() {
             // Create new comment with params

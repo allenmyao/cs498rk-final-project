@@ -5,7 +5,20 @@ appControllers.controller('ProfileController', [
     '$scope',
     '$routeParams',
     'Auth',
-    function($scope, $routeParams, Auth) {
+    'Stacks',
+    function($scope, $routeParams, Auth, Stacks) {
+        var currentUser = Auth.getUser();
+        var params = {
+            where: {
+                owner_id: currentUser._id
+            }
+        };
+        Stacks.get(params).success(function(data) {
+            var stacks = data.data;
+            $scope.stacks = stacks;
+        }).error(function(data) {
+            // Error getting user's stacks
+        });
     }
 ]);
 
