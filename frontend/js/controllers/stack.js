@@ -53,12 +53,23 @@ appControllers.controller('StackDetailController', [
             }).error(function(data) {
                 // Error getting stack owner
             });
+
         }).error(function(data) {
             // Error getting stack
         });
 
         $scope.submitCommentForm = function() {
             // Create new comment with params
+        };
+
+        $scope.deleteStack = function(){
+            Stacks.deleteStack($scope.stackId).success(function(data) {
+                console.log("Deleted stack.");
+                // Stack deleted, redirect
+                location.href("#/stacks/");
+            }).error(function(data) {
+                // Error deleting stack
+            });
         };
     }
 ]);
