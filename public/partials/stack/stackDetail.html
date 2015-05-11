@@ -39,6 +39,9 @@
                 <br>
                 <small>By <span data-ng-bind="comment.username"></span></small>
             </p>
+            <a ng-if="currentUser._id == comment.user" ng-click="deleteComment(comment._id)">
+                <button class="form-control btn btn-danger btn-xs ">Delete</button>
+            </a>
         </div>
 
         <form data-ng-submit="submitCommentForm()" class="comment">

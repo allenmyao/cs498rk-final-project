@@ -89,6 +89,15 @@ appControllers.controller('StackDetailController', [
             });
         };
 
+        $scope.deleteComment = function(comment_id) {
+            Comments.delete(comment_id).success(function(data) {
+                console.log('Successfully deleted comment');
+                window.location.reload();
+            }).error(function(data) {
+                // Error deleting comment
+            });
+        };
+
         $scope.deleteStack = function() {
             Stacks.deleteStack($scope.stackId).success(function(data) {
                 console.log("Deleted stack.");
