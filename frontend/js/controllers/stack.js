@@ -161,12 +161,13 @@ appControllers.controller('StackEditController', [
             // Error getting stack
         });
 
+
         $scope.saveStack = function() {
             // Save stack with changes
             var stackData = $scope.stack;
-            stackData.lastUpdated = new Date();
-            console.log(stackData._id);
-            console.log(stackData);
+            // stackData.lastUpdated = new Date();
+            // console.log(stackData._id);
+            // console.log(stackData);
 
             // NOTE: not working yet
 
@@ -208,28 +209,6 @@ appControllers.controller('StackEditController', [
             });
         };
 
-        $scope.comment = {
-            name: '',
-            user: '',
-            message: ''
-        };
-        $scope.submitCommentForm = function() {
-            var currentUser = Auth.getUser();
-            var commentData = $scope.comment;
-            var currentStack = $scope.stack;
-            commentData.user = currentUser._id;
-            commentData.username = currentUser.name;
-            commentData.stack = currentStack._id;
-            // commentData.dateCreated = new Date();
-            Comments.create(commentData).success(function(data) {
-                // Successfully added comment
-                console.log('Successfully created comment');
-                console.log(commentData);
-                window.location.reload();
-            }).error(function(data) {
-                // Error creating comment
-            });
-        };
         $scope.deleteComment = function(comment_id) {
             Comments.delete(comment_id).success(function(data) {
                 console.log('Successfully deleted comment');
