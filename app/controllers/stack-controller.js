@@ -30,7 +30,7 @@ exports.getStack = function(id, callback) {
 };
 
 exports.updateStack = function(id, data, callback) {
-    Stack.findOneAndUpdate(id, data, function(err, stack) {
+    Stack.findOneAndUpdate({ _id: id }, data, function(err, stack) {
         callback(err, stack);
     });
 };
