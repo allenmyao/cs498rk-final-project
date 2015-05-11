@@ -1,36 +1,37 @@
 <div class="row">
-	<div class="col-md-8 well">
+	<div class="col-md-8 well" ng-style="{'background-color': stack.color}">
 		<div class="header">
 			<h1 class="inline"><span data-ng-bind="stack.name"></span>.</h1>
 			<a ng-click="deleteStack()"><button class="btn btn-danger inline controlButton">Delete Stack</button></a>
 			<a ng-href="#/stacks/{{stack._id}}/edit" class="btn btn-warning inline controlButton">Edit Stack</a>
 			<p>Author: <a data-ng-bind="owner.username" ng-href="#/profile/{{owner._id}}">.</a></p>
-			<p>Last updated at <span data-ng-bind="stack.lastUpdated"></span>.</p>
+			<p>Last updated at <span data-ng-bind="stack.lastUpdated | date:'MM/dd/yyyy, h:mma'"></span>.</p>
 			
 			<p data-ng-bind="stack.description"></p>
 		</div>
 		<div class="grid">
-			<div ng-repeat="bookmark in stack.bookmarks">
-				<a data-ng-bind="bookmark.name" ng-href="{{bookmark.url}}" class="detailStackItem"></a>
+			<div ng-repeat="bookmark in bookmarks" class="bookmarkItem">
 				<a ng-href="{{bookmark.url}}" class="detailStackItem"><img src="http://placehold.it/128x128"></a>
+				</br>
+				<a data-ng-bind="bookmark.name" ng-href="{{bookmark.url}}" class="detailStackItem"></a>
 			</div>
 		</div>
 	</div>
 	<div class="col-md-1"></div>
 	<div class="col-md-3 well">
 		<h3>Comments</h3>
-		<div ng-repeat="comment in stack.comments" class="comment">
-			<p>By <span data-ng-bind="comment.name"></span>, on <span data-ng-bind="comment.dateCreated"></span></p>
-			<p data-ng-bind="comment.message"></p>
+		<div ng-repeat="comment in comments" class="comment">
+			<p>By <span data-ng-bind="comment.username"></span>:</p> <!-- , on <span data-ng-bind="comment.dateCreated"></span> -->
+			<p data-ng-bind="comment.content"></p>
 		</div>
 
 		<form data-ng-submit="submitCommentForm()" class="comment">
-			<label>Name:</label>
-      		<input data-ng-model="comment.name" class="form-control">
-      		<label>Message:</label>
-      		<textarea data-ng-model="comment.message" class="form-control"></textarea>
-      		</br>
-      		<button type="submit" class="btn btn-success form-control">Add Comment</button>
+			<label ng-hide="isLoggedIn">Name:</label>
+  		<input ng-hide="isLoggedIn" data-ng-model="comment.name" class="form-control">
+  		<label>Message:</label>
+  		<textarea data-ng-model="comment.content" class="form-control"></textarea>
+  		</br>
+  		<button type="submit" class="btn btn-success form-control">Add Comment</button>
 		</form>
 	</div>
 </div>

@@ -7,15 +7,12 @@
             </div>
             <form class="form-inline custom-form" data-ng-submit="submitBookmarkForm()">
                 <div class="modal-body">
-                    <input type="text" class="form-control modalField" required placeholder="Name" name="name">
-                    <input type="text" class="form-control modalField modalField-url" required placeholder="URL" name="url">
-                    <!-- <select name="addToStack">
-                          <option value="" disabled selected>Add to Stack</option>
-                            <div ng-repeat="stack in stacks">
-                                <option value="{{name}}">{{name}}</option>
-                            </div>
-                          </select> -->
-                    <div ng-dropdown-multiselect="" options="tags" selected-model="selectedTags"></div>
+                    <input type="text" class="form-control modalField" required placeholder="Name" data-ng-model="bookmark.name">
+                    <input type="text" class="form-control modalField modalField-url" required placeholder="URL" data-ng-model="bookmark.url">
+                    <label>Add to Stack:</label>
+                    <select data-ng-model="bookmark.stack_id" ng-options="stack._id as stack.name for stack in stacks">
+                    </select>
+                    <div ng-dropdown-multiselect="tags" options="tags" selected-model="selectedTags"></div>
                     <div class="clearfix"></div>
                     <br>
 
