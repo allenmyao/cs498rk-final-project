@@ -25,6 +25,7 @@ appControllers.controller('HomepageController', [
     function($scope, Auth, Stacks) {
         var currentUser = Auth.getUser();
         // Get friend ids
+        var friends = currentUser.friends;
         // var params = {
         //     where: {
         //         owner_id: currentUser._id
@@ -36,5 +37,21 @@ appControllers.controller('HomepageController', [
         }).error(function(data) {
             // Error getting user's stacks
         });
+
+        // for(var i=0;i<friends.length();i++) {
+        //     var param = {
+        //         where: {
+        //             owner_id: friends[i]._id
+        //         }
+        //     };
+        //     console.log(param);
+        //     Stacks.get(param).success(function(data) {
+        //         $scope.stacks.push(data.data);
+        //     }).error(function(data) {
+        //         // Error getting friend stacks
+        //         console.log("Error getting friends stacks");
+        //     });
+        // }
+
     }
 ]);
