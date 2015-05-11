@@ -14,7 +14,7 @@
                 <a ng-href="#/users/{{stack.owner_id}}">
                     <p data-ng-bind="otherUser.username">, </p>
                 </a>
-                <p data-ng-bind="stack.lastUpdated">.</p>
+                <p data-ng-bind="stack.lastUpdated | date:'MM/dd/yyyy, h:mma'">.</p>
                 <a href="#" class="stackItem"><img src="http://placehold.it/32x32"></a>
                 <a href="#" class="stackItem"><img src="http://placehold.it/32x32"></a>
                 <a href="#" class="stackItem"><img src="http://placehold.it/32x32"></a>

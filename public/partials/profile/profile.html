@@ -13,7 +13,7 @@
             <div ng-repeat="stack in stacks" class="stack well" ng-style="{'background-color': stack.color}">
                 <a class="stackTitle" ng-href="#/stacks/{{stack._id}}"><h3 data-ng-bind="stack.name">.</h3></a>
                 <a class="stackTitle" ng-href="#/users/{{stack.owner_id}}">
-                    <p>Author, </p>
+                    <p data-ng-bind="currentUser.username">, </p>
                 </a>
                 <p data-ng-bind="stack.lastUpdated | date:'MM/dd/yyyy, h:mma'">.</p>
 
