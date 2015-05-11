@@ -28,6 +28,12 @@ appControllers.controller('StackDetailController', [
                 }
             };
 
+            var commentparams = {
+                where: {
+                    stack: stack._id
+                }
+            };
+
             // TODO: Get bookmarks (name, url) from stack.bookmarks._id 
             Bookmarks.get(params).success(function(data) {
                 var bookmarks = data.data;
@@ -38,7 +44,7 @@ appControllers.controller('StackDetailController', [
             });
 
             // TODO: Get the comment data from stack's comment ids
-            Comments.get(params).success(function(data) {
+            Comments.get(commentparams).success(function(data) {
                 var comments = data.data;
                 $scope.comments = comments;
 
@@ -58,21 +64,27 @@ appControllers.controller('StackDetailController', [
             // Error getting stack
         });
 
-        // $scope.submitCommentForm = function() {
-        //     // Create new comment with params
-        //     var comment = {
-        //         stack = $scope.stackId,
-        //         user = $scope.currentUser
-        //         // username $scope.currentUser.name,
-        //         // content = 
-        //     };
-
-        //     Comments.createComment(comment).success(function(data) {
-
-        //     }).error(function(data) {
-        //         // Error creating comment
-        //     });
-        // };
+        $scope.comment = {
+            name: '',
+            user: '',
+            message: ''
+        };
+        $scope.submitCommentForm = function() {
+            var currentUser = Auth.getUser();
+            var commentData = $scope.comment;
+            var currentStack = $scope.stack;
+            commentData.user = currentUser._id;
+            commentData.username = currentUser.name;
+            commentData.stack = currentStack._id;
+            commentData.dateCreated = new Date();
+            Comments.create(commentData).success(function(data) {
+                // Successfully added comment
+                console.log('Successfully created comment');
+                window.location.reload();
+            }).error(function(data) {
+                // Error creating comment
+            });
+        };
 
         $scope.deleteStack = function(){
             Stacks.deleteStack($scope.stackId).success(function(data) {
@@ -113,6 +125,12 @@ appControllers.controller('StackEditController', [
                 }
             };
 
+            var commentparams = {
+                where: {
+                    stack: stack._id
+                }
+            };
+
             // TODO: Get bookmarks (name, url) from stack.bookmarks._id 
             Bookmarks.get(params).success(function(data) {
                 var bookmarks = data.data;
@@ -123,7 +141,7 @@ appControllers.controller('StackEditController', [
             });
 
             // TODO: Get the comment data from stack's comment ids
-            Comments.get(params).success(function(data) {
+            Comments.get(commentparams).success(function(data) {
                 var comments = data.data;
                 $scope.comments = comments;
 
@@ -143,28 +161,82 @@ appControllers.controller('StackEditController', [
             // Error getting stack
         });
 
-        // Get the stack
-        // $scope.stack
-
-        // Get the user data from owner_id
-        // $scope.owner
-
-        // Get the comment data from stack's comment ids
-        // $scope.comments
-
-        // Get bookmarks (name, url) from stack.bookmarks._id 
-        // $scope.bookmarks
-
-        // $http.get(baseUrl+'/api/stacks/'+$routeParams.stackId).success(function(data) {
-        //     $scope.stack = data.data;
-        // });
-
         $scope.saveStack = function() {
             // Save stack with changes
+            var stackData = $scope.stack;
+            stackData.lastUpdated = new Date();
+            console.log(stackData._id);
+            console.log(stackData);
+
+            // NOTE: not working yet
+
+            Stacks.update(stackData._id, stackData).success(function(data) {
+                // Updated stack
+                console.log('Successfully updated stack');
+                window.location.reload();
+            }).error(function(data) {
+                // Error
+            });
         };
 
-        $scope.deleteComment = function() {
-            // Save stack with changes
+        $scope.bookmark = {
+            name: '',
+            url: '',
+            private: false,
+            tags: []
+        };
+        $scope.addBookmarkToStack = function() {
+            var currentUser = Auth.getUser();
+            var bookmarkData = $scope.bookmark;
+            var currentStack = $scope.stack;
+            bookmarkData.owner_id = currentUser._id;
+            bookmarkData.stack_id = currentStack._id;
+            Bookmarks.create(bookmarkData).success(function(data) {
+                // Successfully created bookmark
+                console.log('Successfully created bookmark');
+                window.location.reload();
+            }).error(function(data) {
+                // Error creating bookmark
+            });
+        };
+        $scope.deleteBookmark = function(bookmark_id) {
+            Bookmarks.delete(bookmark_id).success(function(data) {
+                console.log('Successfully deleted bookmark');
+                window.location.reload();
+            }).error(function(data) {
+                // Error deleting bookmark
+            });
+        };
+
+        $scope.comment = {
+            name: '',
+            user: '',
+            message: ''
+        };
+        $scope.submitCommentForm = function() {
+            var currentUser = Auth.getUser();
+            var commentData = $scope.comment;
+            var currentStack = $scope.stack;
+            commentData.user = currentUser._id;
+            commentData.username = currentUser.name;
+            commentData.stack = currentStack._id;
+            // commentData.dateCreated = new Date();
+            Comments.create(commentData).success(function(data) {
+                // Successfully added comment
+                console.log('Successfully created comment');
+                console.log(commentData);
+                window.location.reload();
+            }).error(function(data) {
+                // Error creating comment
+            });
+        };
+        $scope.deleteComment = function(comment_id) {
+            Comments.delete(comment_id).success(function(data) {
+                console.log('Successfully deleted comment');
+                window.location.reload();
+            }).error(function(data) {
+                // Error deleting comment
+            });
         };
     }
 ]);
