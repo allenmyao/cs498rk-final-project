@@ -18,7 +18,7 @@
 			<div ng-repeat="bookmark in bookmarks" class="bookmarkItem">
 				<a ng-href="{{bookmark.url}}" class="detailStackItem inline"><img src="http://placehold.it/128x128"></a>
 				</br>
-				<a data-ng-bind="bookmark.name" ng-href="{{bookmark.url}}" class="inline"></a>
+				<a data-ng-bind="bookmark.name" ng-href="http://{{bookmark.url}}" class="inline"></a>
 				</br>
 				<a ng-click="deleteBookmark(bookmark._id)"><button class="btn btn-danger">Delete Bookmark</button></a>
 				</br>
@@ -35,14 +35,6 @@
 				<a ng-click="deleteComment(comment._id)"><button class="btn btn-danger form-control">Delete Comment</button></a>
 			</div>
 		</div>
-		<form class="comment" data-ng-submit="submitCommentForm()">
-			<label ng-hide="isLoggedIn">Name:</label>
-  		<input ng-hide="isLoggedIn" data-ng-model="comment.name" class="form-control">
-      <label>Comment:</label>
-      <textarea class="form-control" data-ng-model="comment.message"></textarea>
-      </br>
-      <button type="submit" class="btn btn-success form-control">Add Comment</button>
-		</form>
 	</div>
 	<div class="modal fade" id="addLinkModal">
     <div class="modal-dialog">

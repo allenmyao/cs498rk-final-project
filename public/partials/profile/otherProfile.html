@@ -9,18 +9,16 @@
           <input type="submit" class="btn btn-success" value="Remove Friend">
         </form> -->
         <div class="grid">
-            <div ng-repeat="stack in otherStacks" class="stack well">
-                <a href="#/stacks/{{stack._id}}"><h3 data-ng-bind="stack.name"></h3></a>
-                <a ng-href="#/users/{{stack.owner_id}}">
+            <div ng-repeat="stack in otherStacks" class="stack well" ng-style="{'background-color': stack.color}">
+                <a class="stackTitle" ng-href="#/stacks/{{stack._id}}"><h3 data-ng-bind="stack.name">.</h3></a>
+                <a class="stackTitle" ng-href="#/users/{{stack.owner_id}}">
                     <p data-ng-bind="otherUser.username">, </p>
                 </a>
                 <p data-ng-bind="stack.lastUpdated | date:'MM/dd/yyyy, h:mma'">.</p>
-                <a href="#" class="stackItem"><img src="http://placehold.it/32x32"></a>
-                <a href="#" class="stackItem"><img src="http://placehold.it/32x32"></a>
-                <a href="#" class="stackItem"><img src="http://placehold.it/32x32"></a>
-                <a href="#" class="stackItem"><img src="http://placehold.it/32x32"></a>
-                <a href="#" class="stackItem"><img src="http://placehold.it/32x32"></a>
-                <a href="#" class="stackItem"><img src="http://placehold.it/32x32"></a>
+
+                <div ng-repeat="bookmark in bookmarks" class="stack well">
+                    <a ng-href="{{bookmark.url}}" class="stackItem"><img src="http://placehold.it/128x128"></a>
+                </div>
             </div>
         </div>
     </div>

@@ -33,16 +33,21 @@ appControllers.controller('ModalAddBookmarkController', [
     'Stacks',
     'Tags',
     function($scope, Auth, Bookmarks, Stacks, Tags) {
+        var currentUser = Auth.getUser();
         $scope.bookmark = {
             name: '',
             url: '',
             private: false,
             tags: []
         };
-        Stacks.get().success(function(data) {
+        var params = {
+            where: {
+                owner_id: currentUser._id
+            }
+        };
+        Stacks.get(params).success(function(data) {
             var stacks = data.data;
             $scope.stacks = stacks;
-            console.log(stacks);
         }).error(function(data) {
 
         });
