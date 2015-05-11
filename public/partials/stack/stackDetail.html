@@ -2,8 +2,8 @@
 	<div class="col-md-8 well" ng-style="{'background-color': stack.color}">
 		<div class="header">
 			<h1 class="inline"><span data-ng-bind="stack.name"></span>.</h1>
-			<a ng-click="deleteStack()"><button class="btn btn-danger inline controlButton">Delete Stack</button></a>
-			<a ng-href="#/stacks/{{stack._id}}/edit" class="btn btn-warning inline controlButton">Edit Stack</a>
+			<a ng-if="isCurrentUserStack" ng-click="deleteStack()"><button class="btn btn-danger inline controlButton">Delete Stack</button></a>
+			<a ng-if="isCurrentUserStack" ng-href="#/stacks/{{stack._id}}/edit" class="btn btn-warning inline controlButton">Edit Stack</a>
 			<p>Author: <a data-ng-bind="owner.username" ng-href="#/profile/{{owner._id}}">.</a></p>
 			<p>Last updated at <span data-ng-bind="stack.lastUpdated | date:'MM/dd/yyyy, h:mma'"></span>.</p>
 			
