@@ -40,6 +40,13 @@ appControllers.controller('OtherProfileController', [
             var otherUser = data.data;
             $scope.otherUser = otherUser;
 
+            $scope.isFriend = false;
+            for(var i=0;i<currentUser.friends.length;i++){
+                if(currentUser.friends[i].friend_id=otherUser._id) {
+                    $scope.isFriend = true;
+                }
+            }
+
             var params = {
                 where: {
                     owner_id: otherUser._id
@@ -57,6 +64,7 @@ appControllers.controller('OtherProfileController', [
             var message = data.message;
             $scope.message = message;
         });
+
         // Work in Progress, 500 internal error receive with put request
         $scope.addFriendForm = function() {
             var newFriend = {
@@ -71,7 +79,6 @@ appControllers.controller('OtherProfileController', [
             currentUser_friends.push(newFriend);
             //currentUser_friends.push((userId,userName));
             currentUser.friends = currentUser_friends;
-            console.log();
             Users.update(currentUser._id, currentUser).success(function(data) {
                 // Successfully updated user
                 console.log('Successfully updated User');
