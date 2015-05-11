@@ -13,9 +13,9 @@
             <div ng-repeat="stack in stacks" class="stack well" ng-style="{'background-color': stack.color}">
                 <a ng-href="#/stacks/{{stack._id}}"><h3 data-ng-bind="stack.name">.</h3></a>
                 <a ng-href="#/users/{{stack.owner_id}}">
-                    <p data-ng-bind="user.username">, </p>
+                    <p data-ng-bind="currentUser.username">, </p>
                 </a>
-                <p data-ng-bind="stack.lastUpdated">.</p>
+                <p data-ng-bind="stack.lastUpdated | date:'MM/dd/yyyy, h:mma'">.</p>
 
                 <div ng-repeat="bookmark in bookmarks" class="stack well">
                     <a ng-href="{{bookmark.url}}" class="stackItem"><img src="http://placehold.it/128x128"></a>
