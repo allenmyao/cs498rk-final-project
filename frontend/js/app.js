@@ -1,8 +1,9 @@
 var app = angular.module('app', [
-    'ngRoute',
     'appControllers',
     'appServices',
-    'appDirectives'
+    'appDirectives',
+    'ngRoute',
+    'colorpicker.module'
 ]);
 
 

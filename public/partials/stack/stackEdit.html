@@ -8,7 +8,7 @@
 			<h1><input value="{{stack.name}}" class="inline editName"></input></h1>
 			<p>Author: <a data-ng-bind="owner.username" ng-href="#/profile/{{owner._id}}">.</a></p>
 			<p>Last updated at <span data-ng-bind="stack.lastUpdated | date:'MM/dd/yyyy, h:mma'"></span>.</p>
-			<input type="color" class="modalField" data-ng-model="stack.color">
+			<input colorpicker="hex" type="text" class="modalField" data-ng-model="stack.color">
 			</br>
 			</br>
 			<textarea value="{{stack.description}}" class="form-control"></textarea>
