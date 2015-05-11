@@ -32,14 +32,9 @@ textarea {
   margin: 0 4px;
 }
 
-.stack {
-  // display: block;
-  float: left;
-  width: 204px;
-  height: 204px;
-  border-width: 2px;
-  background: #fff;
-  margin: 10px 10px 0 0;
+.favicon {
+  max-width: 32px;
+  max-height: 32px;
 }
 
 a.stackTitle {
@@ -60,11 +55,8 @@ a.stackTitle {
   padding: 2px;
 }
 
-.placeholder {
-  width: 128px;
-  height: 128px;
-  padding: 100px;
-  display: block;
+.thumbnail {
+  overflow: hidden !important;
 }
 
 .bookmarkItem {
@@ -90,8 +82,7 @@ a.stackTitle {
 }
 
 .comment {
-  padding: 8px;
-  margin: 20px;
+  padding: 4px;
 }
 
 .custom-modal {

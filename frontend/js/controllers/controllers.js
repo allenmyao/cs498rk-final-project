@@ -37,7 +37,6 @@ appControllers.controller('HomepageController', [
         }).error(function(data) {
             // Error getting user's stacks
         });
-
         // for(var i=0;i<friends.length();i++) {
         //     var param = {
         //         where: {

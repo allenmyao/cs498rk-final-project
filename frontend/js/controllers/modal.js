@@ -61,10 +61,13 @@ appControllers.controller('ModalAddBookmarkController', [
             // Create new stack with name = $scope.name
             var currentUser = Auth.getUser();
             var bookmarkData = $scope.bookmark;
+            console.log("about to create bookmark");
+            console.log(bookmarkData);
             bookmarkData.owner_id = currentUser._id;
             Bookmarks.create(bookmarkData).success(function(data) {
                 // Successfully created bookmark
                 console.log('Successfully created bookmark');
+                console.log(data);
                 window.location.reload();
             }).error(function(data) {
                 // Error creating bookmark

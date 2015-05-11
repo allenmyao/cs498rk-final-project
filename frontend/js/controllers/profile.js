@@ -8,14 +8,14 @@ appControllers.controller('ProfileController', [
     'Stacks',
     function($scope, $routeParams, Auth, Stacks) {
         var currentUser = Auth.getUser();
+        $scope.stacks = [];
         var params = {
             where: {
                 owner_id: currentUser._id
             }
         };
         Stacks.get(params).success(function(data) {
-            var stacks = data.data;
-            $scope.stacks = stacks;
+            $scope.stacks = data.data;
         }).error(function(data) {
             // Error getting user's stacks
         });
@@ -35,7 +35,7 @@ appControllers.controller('OtherProfileController', [
         if (userId == currentUser._id) {
             $location.url('/profile');
         }
-
+        console.log("OtherProfileController");
         Users.getOne(userId).success(function(data) {
             var otherUser = data.data;
             $scope.otherUser = otherUser;
