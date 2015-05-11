@@ -87,10 +87,12 @@ appControllers.controller('StackDetailController', [
         };
 
         $scope.deleteStack = function(){
-            Stacks.deleteStack($scope.stackId).success(function(data) {
+            console.log($scope.stack._id);
+
+            Stacks.delete($scope.stack._id).success(function(data) {
                 console.log("Deleted stack.");
                 // Stack deleted, redirect
-                location.href("#/stacks/");
+                window.location.href = "#/stacks/";
             }).error(function(data) {
                 // Error deleting stack
             });
@@ -178,7 +180,10 @@ appControllers.controller('StackEditController', [
             Stacks.update($scope.stackId, stackData).success(function(data) {
                 // Updated stack
                 console.log('Successfully updated stack');
-                window.location.reload();
+                Stacks.delete($scope.stackId).success(function(data) {
+                    console.log("Ugh");
+                });
+                window.location.href = "#/stacks/";
             }).error(function(data) {
                 // Error
                 console.log(data);
