@@ -30,6 +30,10 @@ module.exports = {
         } else {
             message = (error) ? errorMessage : "OK";
         }
+        // send error as data
+        if (error) {
+            data = error.toString();
+        }
 
         res.json({
             "message": message,
