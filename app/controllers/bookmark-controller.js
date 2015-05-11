@@ -19,9 +19,14 @@ exports.createBookmark = function(data, callback) {
     newBookmark.save(function(err, bookmark) {
         if (!err) {
             // push bookmark to Stack
-            Stack.findOneAndUpdate({ _id: bookmark.stack_id}, {
+            Stack.findOneAndUpdate({
+                _id: bookmark.stack_id
+            }, {
                 $push: {
-                    "bookmarks": bookmark._id
+                    "bookmarks": {
+                        "bookmark_id": bookmark._id,
+                        "bookmark_url": bookmark.url
+                    }
                 }
             }, function(err, updated) {
                 callback(err, bookmark, "Created new bookmark. Failed to update Stack.");
@@ -41,7 +46,9 @@ exports.getBookmark = function(id, callback) {
 };
 
 exports.updateBookmark = function(id, data, callback) {
-    Bookmark.findOneAndUpdate({ _id: id }, data, function(err, bookmark) {
+    Bookmark.findOneAndUpdate({
+        _id: id
+    }, data, function(err, bookmark) {
         callback(err, bookmark);
     });
 };

@@ -1,6 +1,10 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+var BookmarkUrlPairSchema = new Schema({
+    bookmark_id: String,
+    bookmark_url: String
+});
 
 var StackSchema = new Schema({
     owner_id: {
@@ -19,9 +23,7 @@ var StackSchema = new Schema({
         type: Boolean,
         default: false
     },
-    bookmarks: [{
-        type: String
-    }],
+    bookmarks: [BookmarkUrlPairSchema],
     lastUpdated: {
         type: Date,
         default: Date.now
