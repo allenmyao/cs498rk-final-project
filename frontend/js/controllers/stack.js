@@ -65,18 +65,21 @@ appControllers.controller('StackDetailController', [
         });
 
         $scope.comment = {
-            name: '',
             user: '',
             message: ''
         };
+
         $scope.submitCommentForm = function() {
             var currentUser = Auth.getUser();
             var commentData = $scope.comment;
             var currentStack = $scope.stack;
-            commentData.user = currentUser._id;
-            commentData.username = currentUser.name;
+            
             commentData.stack = currentStack._id;
-            commentData.dateCreated = new Date();
+
+            if (currentUser) {
+                commentData.user = currentUser._id;
+                commentData.username = currentUser.username;
+            }
             Comments.create(commentData).success(function(data) {
                 // Successfully added comment
                 console.log('Successfully created comment');
