@@ -21,18 +21,19 @@
 
                 <div class="h4">
                     <a class="stackTitle" ng-href="#/stacks/{{stack._id}}">{{stack.name}} </a>
-<!--                     <small>                        
-                            <a ng-href="#/users/{{stack.owner_id}}"> {{getUserName(stack.owner_id)}}
-                            </a></small>
- -->                </div>
+                    <div>
+                        <small><a ng-href="#/users/{{stack.owner_id}}"><span ng-bind="getUsername(stack.owner_id)"></span>
+                        </a></small>
+                    </div>
+                </div>
 
 
                 <!-- <p data-ng-bind="stack.lastUpdated | date:'MM/dd'">.</p> -->
 
                 <span class="label label-default">{{stack.bookmarks.length}}</span>
-                <div ng-repeat="bookmark in stack.bookmarks">
+                <!-- <div ng-repeat="bookmark in stack.bookmarks">
                     <a ng-href="{{bookmark.url}}"><img src="https://www.google.com/s2/favicons?domain_url={{bookmark.url}}"></a>
-                </div>
+                </div> -->
             </div>
         </div>
     </li>

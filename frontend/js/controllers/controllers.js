@@ -22,35 +22,42 @@ appControllers.controller('HomepageController', [
     '$scope',
     'Auth',
     'Stacks',
-    function($scope, Auth, Stacks) {
+    'Users',
+    function($scope, Auth, Stacks, Users) {
         var currentUser = Auth.getUser();
         // Get friend ids
         var friends = currentUser.friends;
-        // var params = {
-        //     where: {
-        //         owner_id: currentUser._id
-        //     }
-        // };
+        var friendUsers = null;
+        var params = {
+            where: {
+                owner_id: {
+                    $in: friends
+                }
+            }
+        };
         Stacks.get().success(function(data) {
             var stacks = data.data;
-            $scope.stacks = stacks;
+
+            var friendParams = {
+                where: {
+                    _id: {
+                        $in: friends
+                    }
+                }
+            };
+            Users.get().success(function(data) {
+                friendUsers = data.data;
+                $scope.stacks = stacks;
+            }).error(function(data) {
+                // Error
+            });
         }).error(function(data) {
             // Error getting user's stacks
         });
-        // for(var i=0;i<friends.length();i++) {
-        //     var param = {
-        //         where: {
-        //             owner_id: friends[i]._id
-        //         }
-        //     };
-        //     console.log(param);
-        //     Stacks.get(param).success(function(data) {
-        //         $scope.stacks.push(data.data);
-        //     }).error(function(data) {
-        //         // Error getting friend stacks
-        //         console.log("Error getting friends stacks");
-        //     });
-        // }
+
+        $scope.getUsername = function(id) {
+            return friendUsers.filter(function(f) { return f._id == id; })[0].username;
+        }
 
     }
 ]);
