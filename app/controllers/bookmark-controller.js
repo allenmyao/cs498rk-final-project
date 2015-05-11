@@ -19,7 +19,7 @@ exports.createBookmark = function(data, callback) {
     newBookmark.save(function(err, bookmark) {
         if (!err) {
             // push bookmark to Stack
-            Stack.findOneAndUpdate(bookmark.stack_id, {
+            Stack.findOneAndUpdate({ _id: bookmark.stack_id}, {
                 $push: {
                     "bookmarks": bookmark._id
                 }
