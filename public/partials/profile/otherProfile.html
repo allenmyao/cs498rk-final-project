@@ -1,28 +1,47 @@
 <div>
     <div data-ng-if="otherUser">
-        <h1 class="inline"><span data-ng-bind="otherUser.username"></span>&apos;s profile</h1>
-        <form data-ng-if="!isFriend" class="form-inline custom-form upline" data-ng-submit="addFriendForm()">
-            <input type="submit" class="btn btn-success" value="Add Friend">
-        </form>
-        <form data-ng-if="isFriend" class="form-inline custom-form upline" data-ng-submit="removeFriendForm()">
-            <input type="submit" class="btn btn-danger" value="Remove Friend">
-        </form>
+        <div class="h2">
+            {{otherUser.username}}
+            <div class="btn-group pull-right">
+                <form data-ng-if="!isFriend" class="form-inline custom-form upline" data-ng-submit="addFriendForm()">
+                    <input type="submit" class="btn btn-success" value="Add Friend">
+                </form>
+                <form data-ng-if="isFriend" class="form-inline custom-form upline" data-ng-submit="removeFriendForm()">
+                    <input type="submit" class="btn btn-danger" value="Remove Friend">
+                </form>
+            </div>
+        </div>
+        <div class="clearfix">
+        </div>
+        <hr>
+
         <!-- Todo - add is_friend check -->
         <!-- <form ng-hide="is_friend_idk" class="form-inline custom-form" data-ng-submit="removeFriendForm()">
           <input type="submit" class="btn btn-success" value="Remove Friend">
         </form> -->
-        <div class="grid">
-            <div ng-repeat="stack in otherStacks" class="stack well" ng-style="{'border-color': stack.color}">
-                <a class="stackTitle" ng-href="#/stacks/{{stack._id}}"><h3 data-ng-bind="stack.name">.</h3></a>
-                <a class="stackTitle" ng-href="#/users/{{stack.owner_id}}">
-                    <p data-ng-bind="otherUser.username">, </p>
-                </a>
-                <p data-ng-bind="stack.lastUpdated | date:'MM/dd/yyyy, h:mma'">.</p>
+        <div class="small-block-grid-3 medium-block-grid-5 large-block-grid-7">
+            <li ng-repeat="stack in otherStacks">
+                <div class="thumbnail">
+                    <div style="display:block; width:100%;" ng-style="{'background-color': stack.color}" class="label"></div>
+                    <div class="caption">
 
-                <div ng-repeat="bookmark in bookmarks" class="stack well">
-                    <a ng-href="{{bookmark.url}}" class="stackItem"><img src="http://placehold.it/128x128"></a>
+                        <div class="h4">
+                            <a class="stackTitle" ng-href="#/stacks/{{stack._id}}">{{stack.name}} </a>
+                            <small>                        
+<!--                             <a ng-href="#/users/{{stack.owner_id}}"> {{currentUser.username}}
+                            </a></small> --> </div>
+
+
+                        <!-- <p data-ng-bind="stack.lastUpdated | date:'MM/dd'">.</p> -->
+
+                        <span class="label label-default">{{stack.bookmarks.length}}</span>
+                        <!--                         <div ng-repeat="bookmark in stack.bookmarks">
+                            <a ng-href="{{bookmark.url}}"><img src="https://www.google.com/s2/favicons?domain_url={{bookmark.url}}"></a>
+                        </div>
+ -->
+                    </div>
                 </div>
-            </div>
+            </li>
         </div>
     </div>
     <div data-ng-if="!otherUser">
