@@ -22,6 +22,12 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <h2>Friends</h2>
+            <div ng-repeat="friend in currentUser.friends">
+                <a ng-href="#/profile/{{friend.friend_id}}">{{friend.friend_name}}</a>
+            </div>
+        </div>
     </div>
     <div data-ng-if="!isLoggedIn">
         <h1>Not logged in</h1>
