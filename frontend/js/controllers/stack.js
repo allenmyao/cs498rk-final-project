@@ -230,5 +230,11 @@ appControllers.controller('StackEditController', [
                 // Error deleting comment
             });
         };
+
+        $scope.getFaviconUrl = function(url) {
+            var url_url = new URL(url);
+            return url_url.protocol + "//" + url_url.hostname + "/favicon.ico";
+        }
+
     }
 ]);
