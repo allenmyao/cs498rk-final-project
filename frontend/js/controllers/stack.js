@@ -86,7 +86,7 @@ appControllers.controller('StackDetailController', [
             });
         };
 
-        $scope.deleteStack = function(){
+        $scope.deleteStack = function() {
             Stacks.deleteStack($scope.stackId).success(function(data) {
                 console.log("Deleted stack.");
                 // Stack deleted, redirect
@@ -95,6 +95,11 @@ appControllers.controller('StackDetailController', [
                 // Error deleting stack
             });
         };
+
+        $scope.getFaviconUrl = function(url) {
+            var url_url = new URL(url);
+            return url_url.protocol + "//" + url_url.hostname + "/favicon.ico";
+        }
     }
 ]);
 

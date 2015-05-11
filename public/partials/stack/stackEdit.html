@@ -1,66 +1,70 @@
 <div class="row">
-	<form class="col-md-8 well" data-ng-submit="saveStack()">
-		<div class="header">
-			
-			<a ng-href="#/stacks/{{stack._id}}" class="btn btn-info inline controlButton">Back</a>
-			<button type="button" class="btn btn-success inline controlButton" data-toggle="modal" data-target="#addLinkModal">Add Bookmark</button>
-			<button type="submit" class="btn btn-warning inline controlButton">Save Stack</button>
-			<h1><input value="{{stack.name}}" class="inline editName"></input></h1>
-			<p>Author: <a data-ng-bind="owner.username" ng-href="#/profile/{{owner._id}}">.</a></p>
-			<p>Last updated at <span data-ng-bind="stack.lastUpdated | date:'MM/dd/yyyy, h:mma'"></span>.</p>
-			<input type="color" class="modalField" data-ng-model="stack.color">
-			</br>
-			</br>
-			<textarea value="{{stack.description}}" class="form-control"></textarea>
-			</br>
-		</div>
-		<div class="grid">
-			<div ng-repeat="bookmark in bookmarks" class="bookmarkItem">
-				<a ng-href="{{bookmark.url}}" class="detailStackItem inline"><img src="http://placehold.it/128x128"></a>
-				</br>
-				<a data-ng-bind="bookmark.name" ng-href="http://{{bookmark.url}}" class="inline"></a>
-				</br>
-				<a ng-click="deleteBookmark(bookmark._id)"><button class="btn btn-danger">Delete Bookmark</button></a>
-				</br>
-			</div>
-		</div>
-	</form>
-	<div class="col-md-1"></div>
-	<div class="col-md-3 well">
-		<h3>Comments</h3>
-		<div ng-repeat="comment in comments">
-			<div class="comment">
-				<p>By <span data-ng-bind="comment.username"></span>, on <span data-ng-bind="comment.dateCreated"></span></p>
-				<p data-ng-bind="comment.content"></p>
-				<a ng-click="deleteComment(comment._id)"><button class="btn btn-danger form-control">Delete Comment</button></a>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade" id="addLinkModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Add New Bookmark</h4>
-            </div>
-            <form class="form-inline custom-form" data-ng-submit="addBookmarkToStack()">
-                <div class="modal-body">
-                    <input type="text" class="form-control modalField" required placeholder="Name" data-ng-model="bookmark.name">
-                    <input type="text" class="form-control modalField modalField-url" required placeholder="URL" data-ng-model="bookmark.url">
-                    <div ng-dropdown-multiselect="tags" options="tags" selected-model="selectedTags"></div>
-                    <div class="clearfix"></div>
-                    <br>
+    <form class="col-md-8 well" data-ng-submit="saveStack()">
+        <div class="header">
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-success" value="Add Bookmark">
-                </div>
-            </form>
+            <a ng-href="#/stacks/{{stack._id}}" class="btn btn-info inline controlButton">Back</a>
+            <button type="button" class="btn btn-success inline controlButton" data-toggle="modal" data-target="#addLinkModal">Add Bookmark</button>
+            <button type="submit" class="btn btn-warning inline controlButton">Save Stack</button>
+            <h1><input value="{{stack.name}}" class="form-control inline editName"></input></h1>
+            <p>Author: <a data-ng-bind="owner.username" ng-href="#/profile/{{owner._id}}">.</a></p>
+            <p>Last updated at <span data-ng-bind="stack.lastUpdated | date:'MM/dd/yyyy, h:mma'"></span>.</p>
+            <input type="color" class="form-control modalField" data-ng-model="stack.color">
+            </br>
+            </br>
+            <textarea value="{{stack.description}}" class="form-control"></textarea>
+            </br>
         </div>
-        <!-- /.modal-content -->
+        <div class="grid">
+            <div ng-repeat="bookmark in bookmarks" class="bookmarkItem">
+                <a ng-href="{{bookmark.url}}" class="detailStackItem inline"><img src="http://placehold.it/128x128"></a>
+                </br>
+                <a data-ng-bind="bookmark.name" ng-href="http://{{bookmark.url}}" class="inline"></a>
+                </br>
+                <a ng-click="deleteBookmark(bookmark._id)">
+                    <button class="btn btn-danger">Delete Bookmark</button>
+                </a>
+                </br>
+            </div>
+        </div>
+    </form>
+    <div class="col-md-1"></div>
+    <div class="col-md-3 well">
+        <h3>Comments</h3>
+        <div ng-repeat="comment in comments">
+            <div class="comment">
+                <p>By <span data-ng-bind="comment.username"></span>, on <span data-ng-bind="comment.dateCreated"></span></p>
+                <p data-ng-bind="comment.content"></p>
+                <a ng-click="deleteComment(comment._id)">
+                    <button class="btn btn-danger form-control">Delete Comment</button>
+                </a>
+            </div>
+        </div>
     </div>
-    <!-- /.modal-dialog -->
-	</div>
-	<!-- /.modal -->
+    <div class="modal fade" id="addLinkModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Add New Bookmark</h4>
+                </div>
+                <form class="form-inline custom-form" data-ng-submit="addBookmarkToStack()">
+                    <div class="modal-body">
+                        <input type="text" class="form-control modalField" required placeholder="Name" data-ng-model="bookmark.name">
+                        <input type="text" class="form-control modalField modalField-url" required placeholder="URL" data-ng-model="bookmark.url">
+                        <div ng-dropdown-multiselect="tags" options="tags" selected-model="selectedTags"></div>
+                        <div class="clearfix"></div>
+                        <br>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-success" value="Add Bookmark">
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 </div>
