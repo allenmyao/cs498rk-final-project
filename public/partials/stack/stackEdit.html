@@ -5,7 +5,7 @@
 			<a ng-href="#/stacks/{{stack._id}}" class="btn btn-info inline controlButton">Back</a>
 			<button type="button" class="btn btn-success inline controlButton" data-toggle="modal" data-target="#addLinkModal">Add Bookmark</button>
 			<button type="submit" class="btn btn-warning inline controlButton">Save Stack</button>
-			<h1><input value="{{stack.name}}" class="inline editName"></input></h1>
+			<h1><input data-ng-model="stack.name" value="{{stack.name}}" class="inline editName"></input></h1>
 			<p>Author: <a data-ng-bind="owner.username" ng-href="#/profile/{{owner._id}}">.</a></p>
 			<p>Last updated at <span data-ng-bind="stack.lastUpdated | date:'MM/dd/yyyy, h:mma'"></span>.</p>
 			<input colorpicker="hex" type="text" class="modalField" data-ng-model="stack.color">
