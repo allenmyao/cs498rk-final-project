@@ -1,10 +1,10 @@
 <div>
     <div data-ng-if="otherUser">
-        <h1><span data-ng-bind="otherUser.username"></span>&apos;s profile</h1>
-        <form data-ng-if="!isFriend" class="form-inline custom-form" data-ng-submit="addFriendForm()">
+        <h1 class="inline"><span data-ng-bind="otherUser.username"></span>&apos;s profile</h1>
+        <form data-ng-if="!isFriend" class="form-inline custom-form upline" data-ng-submit="addFriendForm()">
             <input type="submit" class="btn btn-success" value="Add Friend">
         </form>
-        <form data-ng-if="isFriend" class="form-inline custom-form" data-ng-submit="removeFriendForm()">
+        <form data-ng-if="isFriend" class="form-inline custom-form upline" data-ng-submit="removeFriendForm()">
             <input type="submit" class="btn btn-danger" value="Remove Friend">
         </form>
         <!-- Todo - add is_friend check -->
