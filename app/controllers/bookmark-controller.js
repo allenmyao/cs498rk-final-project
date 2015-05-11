@@ -24,7 +24,7 @@ exports.createBookmark = function(data, callback) {
                     "bookmarks": bookmark._id
                 }
             }, function(err, updated) {
-                callback(err, updated, "Created new bookmark. Failed to update Stack.");
+                callback(err, bookmark, "Created new bookmark. Failed to update Stack.");
             });
         } else {
             callback(err, bookmark);
