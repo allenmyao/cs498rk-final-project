@@ -12,7 +12,7 @@
           <input type="submit" class="btn btn-success" value="Remove Friend">
         </form> -->
         <div class="grid">
-            <div ng-repeat="stack in otherStacks" class="stack well" ng-style="{'background-color': stack.color}">
+            <div ng-repeat="stack in otherStacks" class="stack well" ng-style="{'border-color': stack.color}">
                 <a class="stackTitle" ng-href="#/stacks/{{stack._id}}"><h3 data-ng-bind="stack.name">.</h3></a>
                 <a class="stackTitle" ng-href="#/users/{{stack.owner_id}}">
                     <p data-ng-bind="otherUser.username">, </p>

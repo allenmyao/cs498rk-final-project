@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-md-8 well" ng-style="{'background-color': stack.color}">
+	<div class="col-md-8 well stackOutline" ng-style="{'border-color': stack.color }">
 		<div class="header">
 			<h1 class="inline"><span data-ng-bind="stack.name"></span>.</h1>
 			<a ng-if="isCurrentUserStack" ng-click="deleteStack()"><button class="btn btn-danger inline controlButton">Delete Stack</button></a>
@@ -11,8 +11,7 @@
 		</div>
 		<div class="grid">
 			<div ng-repeat="bookmark in bookmarks" class="bookmarkItem">
-				<a ng-href="{{bookmark.url}}" class="detailStackItem"><img src="http://placehold.it/128x128"></a>
-				</br>
+				<a ng-href="{{bookmark.url}}" class="stackItem placeholder" ng-style="{'background-color': stack.color}"></a>
 				<a data-ng-bind="bookmark.name" ng-href="http://{{bookmark.url}}" class="detailStackItem"></a>
 			</div>
 		</div>

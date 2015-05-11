@@ -1,5 +1,5 @@
 <div class="row">
-	<form class="col-md-8 well" data-ng-submit="saveStack()">
+	<form class="col-md-8 well stackOutline" data-ng-submit="saveStack()" ng-style="{'border-color': stack.color }">
 		<div class="header">
 			
 			<a ng-href="#/stacks/{{stack._id}}" class="btn btn-info inline controlButton">Back</a>
@@ -16,7 +16,7 @@
 		</div>
 		<div class="grid">
 			<div ng-repeat="bookmark in bookmarks" class="bookmarkItem">
-				<a ng-href="{{bookmark.url}}" class="detailStackItem inline"><img src="http://placehold.it/128x128"></a>
+				<a ng-href="{{bookmark.url}}" class="stackItem placeholder" ng-style="{'background-color': stack.color}"></a>
 				</br>
 				<a data-ng-bind="bookmark.name" ng-href="http://{{bookmark.url}}" class="inline"></a>
 				</br>
