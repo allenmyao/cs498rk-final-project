@@ -57,5 +57,27 @@ appControllers.controller('OtherProfileController', [
             var message = data.message;
             $scope.message = message;
         });
+        // Work in Progress, 500 internal error receive with put request
+        $scope.addFriendForm = function() {
+            var newFriend = {
+                friend_id:  '',
+                friend_name: ''
+             };
+            var currentUser = Auth.getUser();
+            var currentUser_friends = currentUser.friends;
+            var userName = $scope.otherUser.username; 
+            newFriend.friend_id = userId;
+            newFriend.friend_name = userName;
+            currentUser_friends.push(newFriend);
+            //currentUser_friends.push((userId,userName));
+            currentUser.friends = currentUser_friends;
+            console.log();
+            Users.update(currentUser._id, currentUser).success(function(data) {
+                // Successfully updated user
+                console.log('Successfully updated User');
+            }).error(function(data) {
+                // Error updating user
+            });
+        };
     }
 ]);
