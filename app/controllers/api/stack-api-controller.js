@@ -16,12 +16,20 @@ exports.getStacks = function(req, res, next) {
         limit: limit,
         count: count
     };
-    console.log(params);
     // Check for private stacks
-    // params.where = { $and: [
-    //     params.where,
-    //     { $or:  [ { private: false }, { $eq: { owner_id: req.user._id } } ] }
-    // ] }
+    console.log(req.user);
+    if (req.user) {
+        params.where = { $and: [
+            params.where,
+            { $or:  [ { private: false }, { owner_id: req.user._id } ] }
+        ] };
+    } else {
+        params.where = { $and: [
+            params.where,
+            { private: false }
+        ] };
+    }
+    console.log(params);
     stackController.getStacks(params, function(err, stacks, errorMessage) {
         if (err) {
             res.status(500);
