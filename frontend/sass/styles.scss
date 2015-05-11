@@ -37,12 +37,17 @@ textarea {
   float: left;
   width: 204px;
   height: 204px;
+  border-width: 2px;
   background: #fff;
   margin: 10px 10px 0 0;
 }
 
 a.stackTitle {
   color: #555;
+}
+
+.stackOutline {
+  border-width: 4px;
 }
 
 .stackItem {
@@ -53,6 +58,13 @@ a.stackTitle {
   margin: 10px 8px;
   border-radius: 2px;
   padding: 2px;
+}
+
+.placeholder {
+  width: 128px;
+  height: 128px;
+  padding: 100px;
+  display: block;
 }
 
 .bookmarkItem {
