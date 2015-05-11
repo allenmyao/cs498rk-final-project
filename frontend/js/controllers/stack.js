@@ -183,9 +183,9 @@ appControllers.controller('StackEditController', [
             Stacks.update($scope.stackId, stackData).success(function(data) {
                 // Updated stack
                 console.log('Successfully updated stack');
-                Stacks.delete($scope.stackId).success(function(data) {
-                    console.log("Ugh");
-                });
+                // Stacks.delete($scope.stackId).success(function(data) {
+                //     console.log("Ugh");
+                // });
                 window.location.href = "#/stacks/";
             }).error(function(data) {
                 // Error
