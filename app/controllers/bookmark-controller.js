@@ -41,7 +41,7 @@ exports.getBookmark = function(id, callback) {
 };
 
 exports.updateBookmark = function(id, data, callback) {
-    Bookmark.findOneAndUpdate(id, data, function(err, bookmark) {
+    Bookmark.findOneAndUpdate({ _id: id }, data, function(err, bookmark) {
         callback(err, bookmark);
     });
 };

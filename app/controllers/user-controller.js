@@ -47,7 +47,7 @@ exports.getUser = function(id, callback) {
 };
 
 exports.updateUser = function(id, data, callback) {
-    User.findOneAndUpdate(id, data, function(err, user) {
+    User.findOneAndUpdate({ _id: id }, data, function(err, user) {
         callback(err, user);
     });
 };

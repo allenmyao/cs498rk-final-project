@@ -170,13 +170,18 @@ appControllers.controller('StackEditController', [
             // console.log(stackData);
 
             // NOTE: not working yet
+            console.log(stackData);
+            console.log($scope.stackId);
+            delete stackData._id;
+            delete stackData.__v;
 
-            Stacks.update(stackData._id, stackData).success(function(data) {
+            Stacks.update($scope.stackId, stackData).success(function(data) {
                 // Updated stack
                 console.log('Successfully updated stack');
                 window.location.reload();
             }).error(function(data) {
                 // Error
+                console.log(data);
             });
         };
 
