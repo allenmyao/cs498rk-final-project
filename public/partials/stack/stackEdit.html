@@ -4,7 +4,8 @@
             <div class="form-inline">
 
                 <input ng-model="stack.name" class="form-control editName">
-                <input type="color" class="form-control color-picker" id="color-picker" data-ng-model="stack.color">
+                <input colorpicker="hex" type="text" class="form-control color-picker" id="color-picker" data-ng-model="stack.color">
+                <input type="checkbox" ng-model="stack.private"> Make private
 
                 <div class="btn-group pull-right">
                     <button type="submit" class="btn btn-warning">Save Stack</button>
@@ -19,7 +20,7 @@
         <div class="small-block-grid-8 medium-block-grid-12 large-block-grid-16">
             <li ng-repeat="bookmark in bookmarks" class="bookmarkItem text-center">
                 <a ng-href="{{bookmark.url}}" class="detailStackItem">
-                    <img class="favicon" src="{{getFaviconUrl(bookmark.url)}}">
+                    <img class="favicon" ng-src="{{getFaviconUrl(bookmark.url)}}">
                 </a>
                 </br>
                 <a data-ng-bind="bookmark.name" ng-href="{{bookmark.url}}" class=" detailStackItem">

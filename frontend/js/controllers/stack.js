@@ -238,8 +238,14 @@ appControllers.controller('StackEditController', [
         };
 
         $scope.getFaviconUrl = function(url) {
-            var url_url = new URL(url);
-            return url_url.protocol + "//" + url_url.hostname + "/favicon.ico";
+            var urlUrl = null;
+            try {
+                urlUrl = new URL(url);
+                return urlUrl.protocol + "//" + urlUrl.hostname + "/favicon.ico";
+            } catch (e) {
+                return './share.png';
+            }
+            
         }
 
     }
