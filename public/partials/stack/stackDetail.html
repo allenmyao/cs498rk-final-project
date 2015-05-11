@@ -6,8 +6,7 @@
 			<a ng-if="isCurrentUserStack" ng-href="#/stacks/{{stack._id}}/edit" class="btn btn-warning inline controlButton">Edit Stack</a>
 			<p>Author: <a data-ng-bind="owner.username" ng-href="#/profile/{{owner._id}}">.</a></p>
 			<p>Last updated at <span data-ng-bind="stack.lastUpdated | date:'MM/dd/yyyy, h:mma'"></span>.</p>
-			
-			<p data-ng-bind="stack.description"></p>
+			<!-- <p data-ng-bind="stack.description"></p> -->
 		</div>
 		<div class="grid">
 			<div ng-repeat="bookmark in bookmarks" class="bookmarkItem">
