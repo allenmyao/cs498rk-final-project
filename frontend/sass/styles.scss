@@ -34,6 +34,7 @@ textarea {
 
 .stack {
   // display: block;
+  // border: #aaa solid 2px;
   float: left;
   width: 204px;
   height: 204px;
@@ -51,12 +52,21 @@ textarea {
   padding: 2px;
 }
 
+.bookmarkItem {
+  display: inline-block;
+  text-align: center;
+}
+
 .detailStackItem {
   display: inline-block;
-  background: #ccc;
-  margin: 10px 8px;
-  border-radius: 4px;
+  // width: 100%;
+  // background: #ccc;
+  // margin: 10px 8px;
   padding: 2px;
+
+  img {
+    border-radius: 4px;
+  }
 }
 
 .bookmarkPic {
@@ -92,4 +102,8 @@ textarea {
       color: $green; //$color2: #93bd6a;
     }
   }
+}
+
+.editName {
+  width: 50%;
 }
