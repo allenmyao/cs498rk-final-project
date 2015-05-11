@@ -34,12 +34,15 @@ textarea {
 
 .stack {
   // display: block;
-  // border: #aaa solid 2px;
   float: left;
   width: 204px;
   height: 204px;
   background: #fff;
-  margin: 10px;
+  margin: 10px 10px 0 0;
+}
+
+a.stackTitle {
+  color: #555;
 }
 
 .stackItem {
