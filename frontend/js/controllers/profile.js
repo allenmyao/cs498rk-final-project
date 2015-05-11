@@ -41,9 +41,11 @@ appControllers.controller('OtherProfileController', [
             $scope.otherUser = otherUser;
 
             $scope.isFriend = false;
-            for(var i=0;i<currentUser.friends.length;i++){
-                if(currentUser.friends[i].friend_id=otherUser._id) {
-                    $scope.isFriend = true;
+            if (currentUser) {
+                for(var i=0;i<currentUser.friends.length;i++){
+                    if(currentUser.friends[i].friend_id=otherUser._id) {
+                        $scope.isFriend = true;
+                    }
                 }
             }
 
